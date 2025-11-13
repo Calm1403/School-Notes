@@ -47,7 +47,6 @@ Eternal blue remote code execution:
 
   windows/meterpreter/reverse_tcp is a payload.
 
-
 Payloads, a clarification:
 
   The payload is a program set over the network, there's many designed for
