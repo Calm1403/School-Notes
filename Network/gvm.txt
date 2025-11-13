@@ -1,0 +1,46 @@
+
+The gvm is greenbone's community addition vulnerability assessment scanner manager.
+
+/usr/lib/systemd/system/gsad.service is the configuration file.
+
+You'll want to edit the --listen flag at the ExecStart entry.
+
+Install greenbone vulnerability assessment scanner:
+
+sudo apt-get install gmv -y
+
+Setup installation, download dependencies:
+
+gvm-setup
+
+Check setup:
+
+gvm-check-setup -h
+
+Start:
+
+gvm-start -h
+
+Stop:
+
+gvm-stop -h
+
+To perform vulnerability assessment scanning, information like CVEs, port lists and scan configs are
+required; these are known as feeds.
+
+Data included can be:
+
+VT (Vulnerability testing) data; contains .nasl and .notus files for creating results. 
+SCAP (security content automation protocol) data; used in providing information of vulnerabilities.
+
+This contains both CPE and CVE data; common platform enumeration and common vulnerability and exposures.
+
+CERT data; structured data for known vulnerabilities.
+GVMD (greenbone vulnerability management daemon) data used by the gvmd: port lists, scanner configs.
+
+Updating the feeds is crucial when mitigating with vulnerabilities.
+
+You can update the feeds by writing:
+
+greenbone-feed-sync
+

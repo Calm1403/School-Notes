@@ -1,0 +1,57 @@
+
+What is it? :
+
+IP tables are used to setup, maintain, and inspect packet filter rules
+in the Linux kernel through the manipulation of 'Tables.'
+
+A table contains a number of builtin or user-defined 'chains.'
+
+A chain is a list of rules that can match a set of network packets.
+
+A packet that matches according the defined rules of a chain is called
+a 'target.'
+
+A firewall rule specifies the criteria for a packet and a target. If a packet does
+not match, it's naturally not a target for that rule; the next rule in the chain 
+is then examined.
+
+You can think of a table as a list of chains, lists of rules; a table
+is a list of lists of rules.
+
+Table:
+  Chain 1:
+    Rule 1.
+    Rule 2.
+    ...
+    Rule N.
+  Chain 2:
+    Rule 1.
+    Rule 2.
+    ...
+    Rule N.
+  ...
+  Chain N:
+    Rule 1.
+    Rule 2.
+    ...
+    Rule N.
+
+Commmand Example. :
+
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j \
+  REDIRECT --to-port <yourListenPort>
+
+The NAT table, as specified by '-t nat' is used to refer to packets that create
+new connections. 
+
+The pre-routing chain specifies that we're altering the packets as soon as they're received;
+the '-A' flag is a means of specifying that we want to (A)PPEND this chain to the 
+table specified.
+
+The '-p' specifies the protocol used for transferring information, in this case we're looking at the Tele-communications Protocol; destination-port corresponds with the port we're watching 
+to receive these packets, in this case port 80 which corresponds to HTTP; we're watching for
+HTTP connections that use TCP.
+
+The '-j' flag specifies what to do when we receive these packets; we (J)UMP to this instruction
+and carry it out, which in this case is the act of redirecting to a given port as specified
+by the REDIRECT builtin.

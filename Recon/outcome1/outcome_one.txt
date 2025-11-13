@@ -1,0 +1,46 @@
+Definition of an ethical hacking:
+
+  Ethical hacking refers to the process of exploiting
+  an IT system, with the permission of the owner, to
+  determine its vulnerabilities and weaknesses.
+
+  The results of ethical hacking are typically
+  used to recommend preventive measures that
+  mitigate the risk of a cyber attack.
+
+Definition of an ethical hacker:
+
+  An ethical hacker is a person trusted
+  to use the methods of ethical hacking
+  to penetrate an organisation's
+  networks and or computer system.
+
+Unethical hacking process:
+
+  1. Recon.         - Find target; passive and active finger printing.
+  2. Scanning.      - Scan the target for vulnerabilities. 
+  3. Access.        - Exploit vulnerabilities to gain access to confidential info; rainbow tables.
+  4. Exfiltration.  - Modify or keep information.
+  5. Sustainment.   - Ensure possible return; root kits
+  6. Assult.        - Destroy borked computer (optional).
+  7. Obfuscation.   - Cover tracks.
+
+Pentesting process:
+
+  The process is concerned with 1, 2, 3, 5 and 7 of the
+  above process.
+
+Box testing:
+
+  Black boxes are unknown, white are known completely and grey are known to a minimal degree.
+
+Legislation:
+
+  Cybercrime - prosecution guidance:
+    Annex A: Cyber-Dependent Offences.
+    Annex B: Cyber-Enabled Offences.
+    Annex C: Abbreviations and Glossary.
+
+  Criminal legislation:
+    Computer Misuse Act 1990.
+    The Terrorism Act 2000.

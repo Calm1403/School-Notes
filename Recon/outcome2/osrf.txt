@@ -1,0 +1,30 @@
+usage: osrf [-h] [--license] [--version]
+            <sub_command> <sub_command_options> ...
+
+OSRFramework CLI. Collection of tools included in the framework.
+
+SUBCOMMANDS:
+  List of available commands that can be invoked using OSRFramework CLI.
+
+  <sub_command> <sub_command_options>
+    alias_generator     Generates a list of candidate usernames based on known
+                        information.
+    checkfy             Verifies if a given email address matches a pattern.
+    domainfy            Checks whether domain names using words and nicknames
+                        are available.
+    mailfy              Gets information about email accounts.
+    phonefy             Looks for information linked to spam practices by a
+                        phone number.
+    searchfy            Performs queries on several platforms.
+    usufy               Looks for registered accounts with given nicknames.
+
+ABOUT ARGUMENTS:
+  Showing additional information about this program.
+
+  -h, --help            shows this help and exists.
+  --license             shows the AGPLv3+ license and exists.
+  --version             shows the version of the program and exists.
+
+Use 'osrf <command> --help' to learn more about each command. Check
+OSRFramework README.md file for further details on the usage of this program
+or follow us on Twitter in <http://twitter.com/i3visio>.

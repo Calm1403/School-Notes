@@ -1,0 +1,48 @@
+
+Docker images:
+  A docker container is an executing image; a docker image is a standardised package containing
+  everything needed to run an application; they can be distributed and shared with others.
+
+The docker hub:
+  This is where you share images.
+
+  Docker hub is the default and go to registry for images.
+
+Pulling containers:
+  Usage: docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+
+  Example: docker pull docker/welcome-to-docker
+
+  A line in this output represents a downloaded layer of the image;
+  each layer represents a set of file system changes where data is
+  modified.
+
+  Images are immutable; an image created can't be modified, but it
+  can be added to or replaced with a new image.
+
+Docker image info:
+  You can find the docker image history by using the history verb.
+
+  You can also find the docker image info using the ls verb.
+
+  Example: docker image (history|ls)
+
+Repositories and registries:
+  A repository is not a registry; a repository is a collection of related images in a registry, where a registry is
+  a pool of images.
+
+Running containers:
+  You can run containers using the run verb.
+
+  Example: docker run -d -p 8080:80 docker/welcome-to-docker
+
+Building images:
+  You can build images by git pulling projects with docker build for projects with docker integration.
+
+  This is done by including a Dockerfile, a text based script instruction set for building the image.
+
+  Example:
+    1. git clone https://github.com/docker/getting-started-todo-app
+    2. cd getting-started-todo-app
+    3. docker build -t <DOCKER_USERNAME>/getting-started-todo-app.
+    4. docker image ls

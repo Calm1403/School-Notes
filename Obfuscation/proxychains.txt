@@ -1,0 +1,37 @@
+
+Setting up tor:
+
+Installing:
+  sudo apt-get install tor -y
+
+Info:
+  The tor daemon allows us to route traffic through the tor net; this is our proxy.
+
+  To start the tor daemon:
+
+  ~$ sudo systemctl start tor.service
+
+Setting up proxy chains:
+  sudo apt-get install proxychains4 -y
+
+Info:
+  We use proxychains4 to enable the usage of proxies for networked applications.
+
+  To do this we write:
+
+  ~$ proxychains4 <command>
+
+  The proxychains4 command is configured in /etc/proxychains4.conf.
+
+  The tor daemon uses port 9050 on localhost to connect to the tornet.
+
+  To ensure:
+    In /etc/proxychains4.conf:
+    1. socks5 127.0.0.1 9050 is set under [ProxyList].
+      - Tor uses port 9050 on the local machine to connect to the tor net. 
+      - Socks5 enable proxies to use UDP and TCP.
+    2. dynamic-chain is enabled.
+      - This ensures that dead proxies are skipped over; there may be dead ones in
+        the tor net.
+    3. proxy_dns is enabled.
+      - This ensures that DNS requests are proxied too; chance of dns leaks reduces.

@@ -1,0 +1,117 @@
+
+Definition of scanning:
+  This allows us to check for live systems, open ports, scan beyond intrusion detection systems,
+  perform 'banner grabbing', scan for vulnerabilities, draw network diagrams, prepare proxies
+  and more.
+
+  Generally, this is the process of determining a target's vulnerabilities.
+
+Fragmentation:
+  This breaks a network packet into smaller chunks; r educes the chance of being detected
+  by the IDS.
+
+  Colasoft packet builder allows for the creation of custom network packets.
+
+ICMP - Internet Control Message Protocol:
+  This is a support protocol; its used by network devices to send
+  general operational information when communicating with IP addresses.
+
+  An error, for example, is indicated through this protocol when a host or
+  router can't be reached.
+
+  Codes:
+  0: Echo reply; answer to type eight.
+  3: Destination unreachable.
+    0: Destination network unreachable.
+    1: Destination host unreachable.
+    6: Network unknown.
+    7: Host unknown.
+    9: Network administratively prohibited.
+    10: Host administratively prohibited.
+    13: Communication administratively prohibited.
+  4: Source quench; a congestion control message.
+  5: Redirect.
+    0: redirect network.
+    1: redirect host.
+  8: Echo request; ping message that requests the echo reply.
+  11: Time exceeded.
+
+NMAP:
+  Speeding Scans:
+    For things like class-A and B addresses, having a lot of hosts, most
+    networks that use these typically only use the first few addresses as if
+    it were a class C.
+
+    You can also apply the --fast-scan flag or mess with the timing templates.
+
+  Firewall Scanning:
+    Stateful firewalls analyse the context of internet traffic.
+
+    nmap can be made to scan for traffic rules by specifying.
+
+    nmap -p 80 -sA <address>
+
+    Any filtered ports suggests that there's a firewall.
+
+    The -p flag specifies the port to scan for, being http; determines firewall rules particular
+    to a server.
+
+    This can be used to see if firewalls are active.
+
+    Address is the address of the machine to scan.
+
+    Mac addresses found in the output can be used as an identifier for the manufacturer of the device or
+    network interface card; the first three bytes.
+
+  Scanning operating systems:
+    The -O flag can be used to perform an OS detect.
+
+    nmap -T4 -A -O -v --fuzzy --osscan-guess <ip>
+
+  Checking for remote desktop vulnerabilities:
+    nmap -sV --script=rdp-vuln-ms12-020 -p 3389 <ip>
+
+  Scan types:
+    Some scan types may use what's called the three way handshake
+    if they use the telecom protocol specification.
+
+    TCP uses a process to negotiate the sequence and acknowledgement fields
+    before starting the session; it ensures that a connection is established
+    before sending information to reduce loss of information.
+
+    1. [HOST] -> SYN -> [SERVER]
+    2. [HOST] <- SYN, ACK <- [SERVER]
+    3. [HOST] -> ACK -> [SERVER]
+
+    1.  There's three steps, firstly host one sends a TCP SYN packet to the server or host
+        destination. This packet contains an arbitrary sequence number marking the beginning
+        of the sequence numbers that the host will transmit.
+
+    2.  The server receives the packet; responds with its own sequence number.
+        The response also includes an acknowledgement number; typically the
+        sequence number of the host incremented by one.
+
+    3.  The response of the server is (typically) acknowledged by the host; sends
+        the server's sequence number, again typically, incremented by one.
+
+    On connection termination, the server and host will exchange TCP segments
+    with their FIN flags set to 1.
+
+    - Full open (-sT):
+        * Know as TCP connect and full connect.
+        * Runs the TCP 3-way handshake.
+        * Easy to detect.
+
+    - Half open (-sY):
+        * No completion of three way handshake.
+
+    https://nmap.org/book/scan-methods-null-fin-xmas-scan.html
+    - Xmas / FIN / Null scan (-sX, -sF, -sN):
+        * Uses FIN, URG, PSH flags.
+          -sF only uses fin, -sN uses non, -sX uses all flags.
+        * No response means that the port is open.
+        * Very easily detectable; intrinsically more stealthy than a SYN scan but
+          easily detectable by an IDS.
+        * Can be used to find firewall rules.
+        * Doesn't work well with windows devices.
+        * Good for non-stateful firewalls and packet filtering routers.

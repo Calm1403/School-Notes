@@ -1,0 +1,70 @@
+
+Install:
+
+  ~$ sudo apt install metasploit-framework
+
+Running:
+
+  ~$ msrfdb
+
+Meterpreter:
+
+  This is an abbreviation for metasploit interpreter.
+
+  The meterpreter shell appears in the terminal of your attacking
+  machine; it gives you access to a shell session of the target.
+
+  An executable file should be created by msfvenom to be downloaded
+  to the target's machine.
+
+Searching for modules:
+
+  msf > search eternalBlue
+
+  Looks for exploits pertaining to this vulnerability.
+
+Using modules:
+
+  msf > use 0
+
+  Uses the first entry of search.
+
+Listing modules:
+
+  msf > options
+
+  Lists the options relevant to the module.
+
+Eternal blue remote code execution:
+
+  In the module windows/smb/ms17_010_eternalblue:
+
+  LHOST should be set to the attacking host, the local host; RHOSTS are the targets.
+
+  msf > set RHOSTS 192.168.100.2
+
+  LPORT represents the port to be exploited, RHOSTS represents the port to go through on local host.
+
+  windows/meterpreter/reverse_tcp is a payload.
+
+
+Payloads, a clarification:
+
+  The payload is a program set over the network, there's many designed for
+  all kinds of scenarios.
+
+  There are two types of payload: staged and single.
+ 
+  A staged payload consists of two main components, a stub loader and a final stage payload.
+
+  When you deliver windows/meterpreter/reverse_tcp for instance, you actually
+  send the loader first; when the loader is executed, it will ask the handler
+  on the attacker's side to send over the final stage.
+
+  You can think of it as part one and two epoxy resin; both are useless on their
+  own, but they work together for an overall result.
+
+  A single stage payload is payload designed to be sent off in one; can be used
+  when the target has no network access.
+
+  We create a reverse bind connection that's running on the port of the Kali.

@@ -1,0 +1,108 @@
+
+PORT    STATE SERVICE      VERSION
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds Windows 7 Enterprise 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+MAC Address: 08:00:27:0F:73:7F (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Service Info: Host: WIN7-VM; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time: 
+|   date: 2025-11-12T12:12:21
+|_  start_date: 2025-11-12T12:07:12
+| nbstat: NetBIOS name: WIN7-VM, NetBIOS user: <unknown>, NetBIOS MAC: 08:00:27:0f:73:7f (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+| Names:
+|   WIN7-VM<20>          Flags: <unique><active>
+|   WIN7-VM<00>          Flags: <unique><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   WORKGROUP<1e>        Flags: <group><active>
+|   WORKGROUP<1d>        Flags: <unique><active>
+|_  \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
+| smb-os-discovery: 
+|   OS: Windows 7 Enterprise 7601 Service Pack 1 (Windows 7 Enterprise 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1
+|   Computer name: Win7-VM
+|   NetBIOS computer name: WIN7-VM\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2025-11-12T12:12:21+00:00
+|_clock-skew: mean: 22s, deviation: 0s, median: 21s
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+
+NOTE:
+
+You should use zenmap for the test because it's easier to read.
+
+-F: Fast mode - Scan fewer ports than the default scan.
+
+<user>/desktop/workspace contains the results of:
+
+sudo nmap -sC -sV -Pn -oA active_ports 192.168.100.0/24 --verbose
+
+-sV: Probe open ports to determine service/version info
+-sC: equivalent to --script=default
+
+-oA active_ports generates output files.
+
+We remove the -oA flag in zenmap to not output files.
+
+SMB is a server message block protocol; client-server communication
+protocol that is used for sharing access to files, devices and serial
+ports.
+
+The network basic input output system is an implementation of session layer
+of the OSI model, allowing applications on separate computers to communicate
+over a local area network.
+
+This allows us to potentially get information about the operating systems of hosts
+running on a network.
+
+Do all the scanning at the start, then again at the end to ensure that
+the problems were resolved.
+
+You can save scans from zenmap to review previous results; I've saved them to
+desktop/workspace.
+
+NetBIOS isn't a protocol, it's an implementation.
+
+nmap --script vuln 192.168.68.2 # This runs a vulnerability test.
+
+When doing a scan with openVas, make sure that the feeds are up to date.
+
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-12 12:55 GMT
+Nmap scan report for 192.168.100.2
+Host is up (0.00062s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+MAC Address: 08:00:27:0F:73:7F (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+Host script results:
+|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+| smb-vuln-ms17-010: 
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+|     Risk factor: HIGH
+|       A critical remote code execution vulnerability exists in Microsoft SMBv1
+|        servers (ms17-010).
+|           
+|     Disclosure date: 2017-03-14
+|     References:
+|       https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt attacks/
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+|_      https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+Nmap done: 1 IP address (1 host up) scanned in 29.14 seconds
+
+systemctl status gvmd
