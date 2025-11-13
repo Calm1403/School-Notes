@@ -58,7 +58,7 @@ Initiallise the LXD instance:
 
 	~$ Would you like the Lxd server to be available over the network?
 
-	Allows you to access the server remotely.
+	This allows you to access the server remotely.
 
 	~$ Would you like any cached images to be automatically updated?
 	~$ Store configuration as YAML?
