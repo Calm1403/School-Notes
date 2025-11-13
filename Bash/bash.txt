@@ -1,0 +1,39 @@
+
+Preface:
+	Symbols surrounded by box brackets are optional.
+
+Interactivity:
+
+	A bash shell can be invoked either interactively, or non interactively; this means that
+        the shell is either recieving input from the keyboard, or a file respectively.
+
+Compound commands:
+
+	A compound command is a collection of simple commands; either a list, a pipe, or a loop.
+
+Pipes:
+
+	A pipe is of the following syntax: command1 [| command2]
+
+	The output of each command is the input of the next; each command read's the previous one's output. Each command of a pipline is executed in
+        its own subshell; the execution environment. The return value of a pipeline is the return value of the
+        last command to be executed in the pipeline.
+
+Lists:
+
+	A list is a sequence of one or more pipelines seperated by one of the operators ';', '&', '&&', or '||', and optionally
+	terminated by one of ';', '&', or a newline.
+
+	If a command is terminated by the control operator '&', the shell executes the command asynchronously in a subshell; this
+        executes the command in the background. The shell does not wait for the command to finish execution.
+
+Wild Card:
+
+	Astrix '*' is a wild card and will search for anything given a pattern; specifyi
+	ng no pattern implies all. You can also use {} to create multiple files; it's an expression for a range or list. 
+
+	It's in a {n..m} format if a range, where n and m are arbitrary integers. For a
+	list, you can specify a list; {n1, n2, ..., nm}.
+
+	Anystring of text before or after the astrix will server as a pattern to be
+	matched against; it may be used as argument.

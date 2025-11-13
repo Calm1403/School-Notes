@@ -1,0 +1,125 @@
+Lxd:
+
+	It's similar to docker, allowing you to create containers of linux systems;
+	you're able to create full virtual machines with this, which is the
+	key difference.
+
+	It has its own set of commands, and a web interface similar to portainer.
+
+	Lxd - Daemon.
+	Lxc - Command.
+
+	Lxc is a command line interface to the daemon.
+
+	This command is primarly used for ubuntu, but you can do more than just 
+	running ubuntu, you can also run windows and other linux distros.
+
+	You can create a full blown virtual machine; you
+	preset the system resouces. With a container, resources
+	are used as they're needed; no preseting.
+
+Installation:
+
+	~$ sudo snap install lxd
+
+	You may also specify the following commands to change the version or behaviour of lxc:
+
+	~$ sudo snap install lxd --cohort="+"                # can be used to keep cluster members synchronized (don't worry about this if you're not clustering).
+	~$ sudo snap install lxd --channel=<channel target>  # can be used to select different releases.
+	~$ sudo snap install lxd --channel=6/stable for e.g. # installs stable six.
+
+Post Install:
+
+	getent group lxd | grep -qwF "$USER" || sudo usermod -aG lxd "$USER"
+
+	Allow the current user to interact wit hthe LXD daemon; update LXD group.
+
+	Use newgrp lxd to apply the change to the current shell session.
+
+	sudo snap restart lxd
+
+Initiallise the LXD instance:
+
+	lxd init produces this output:
+
+	~$ Do you want to use LXD clustering?
+	~$ Do you want to configure a new storage pool?
+	~$ (IF YES) Name of the storage backend (file system):
+	~$ Create new <name> pool?
+	~$ Use existing empty block device (disk or partition)?
+	~$ Would you like to connect to a MAAS server?
+	
+	The question above is to do with bare metal; turns hardware into programmable, cloud-like bare metal
+	infastructure. Interesting, but not needed all the time.
+
+	~$ Would you like to create a new network bridge?
+
+	This is used to create a bridge between the containers' and the host's network?
+
+	~$ Would you like the Lxd server to be available over the network?
+
+	Allows you to access the server remotely.
+
+	~$ Would you like any cached images to be automatically updated?
+	~$ Store configuration as YAML?
+
+Creating images:
+
+	~$ lxc launch remote:image containername
+
+	Remote can be in these forms:
+	
+		1. ubuntu: this    serves official Ubuntu cloud image releases.
+
+		2. ubuntu-daily:   this serves official Ubuntu cloud images of the daily development releases.
+
+		3. ubuntu-minimal: this serves official Ubuntu Minimal cloud image releases.
+
+		4. images:         this server provides unofficial images for a variety of Linux distributions. This
+                                   is not the recommended server for Ubuntu images.
+
+	The second parameter is the version; the first is the image of the operating system you're emulating.
+
+	For example, you can write:
+
+	~$ lxc launch ubuntu:24.04 ubuntu-container
+
+Access an image instance:
+
+	To get access to the container, you can use lxc shell <name of container>.
+
+	You can also do lxc exec <name> -- bash, this opens a bash session.
+
+	You can specify a command using lxd exec <command> as if its running on the container.
+
+	You can use lxc info <name>, to check the containers info.
+
+Stopping and starting an instance:
+
+	lxc stop / start <name>
+
+Renaming containers:
+
+	You can change the name of the container using lxc move <old_name> <new_name>
+
+Web Interface:
+
+	The web interface can be found at 127.0.0.1:8443; it is kinda like a miniturised hypervisor.
+
+	~$ lxc config set core.https_address :8443 # sets the webserver to port 8443 on localhost.
+
+Certificate authentication:
+
+	The website may want to install a certificate to ensure security by some means.
+
+	You'll be given a series of instructions on first page load.
+
+	In order for the browser certificate to the trust store, present a trust token generated
+	by the server.
+
+	You can replace 'lxd-ui' with the name you want to give the identity.
+
+	~$ lxc auth identity create tls/lxd-ui --group admins
+
+	Paste the output of this command in the website to
+	authenticate it.

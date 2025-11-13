@@ -1,0 +1,49 @@
+Gnome shell:
+
+	Gnome shell extensions are a means of installing core user interface functions for gnome.
+
+	These include the Panel at the top of the screen, activities overview, the message tray, etc.
+
+	These are peices of code written by third party developers that modify the way gnome works; extensions can be
+	mallicious for this reason. So don't install them willy nilly without properly reading into them.
+
+	Gnome shell is the graphical shell of the gnome desktop environment; this is a pseudonym for graphical interface.
+
+	A shell is a TUI environment and programming language pair; the borne again shell (bash) is an example.
+
+Installation:
+
+	Connector:
+
+		The easiest way to install an extension and the connector is using the package manager:
+
+		sudo apt-get install gnome-browser-connector -y
+
+		The gnome browser connector is a connector for integrating gnome extensions to gnome; it connects to a web
+		extension and allows you to download these interface functions from the web.
+
+	Gnome web extension:
+
+		To install the gnome shell extensions you
+		need to enable the gnome web extension in your
+		web browser; check for it in the
+		extensions settings.
+
+	Gnome tweaks (optional):
+
+		You can install gnome tweaks to enable you to
+		change a numbenr of settings like wall paper changes,
+		start up applications, so on and so forth.
+
+		sudo apt-get install gnome-tweaks
+
+		It's not required for extensions to work, its just a nice GUI.
+
+	Gnome shell extensions:
+
+		To install the actual extensions, go to the gnome extensions web page and
+		just enable them; they'll be installed after that.
+
+Enabling and disabling extensions:
+
+	You can go to the tweaks app or use the web interface to enable or disable extensions.

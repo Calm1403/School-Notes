@@ -1,0 +1,35 @@
+The '/' is the primary root directory; the root directory of the entire file system hierarchy.
+
+The '/bin' directory contains command binaries that need to be available in single user mode, including to bring up the system or repair it, for all users (e.g, cat, ls, cp).
+
+Aside: the single user mode refers to when a multiuser computer boots into a single superuser, mainly for maintenence purposes.
+
+The '/boot' directory contains the boot loader files (e.g, kernels, initrd).
+
+The '/dev' directory contains device files (the are interfaces to device drivers that appear as ordinary files).
+
+The '/etc' directory contains host specific system-wide configuration files.
+
+The '/etc/opt' directory contains host specific system-wide configuration files.
+
+The '/home' directory contains saved files, person settings, documents, etc of the host's users.
+
+The '/lib' directory contains essentials for the binaries in /bin and /sbin.
+
+The '/media' directory contains the mount points for removable media.
+
+The '/mnt' directory contains temporarily mounted filesystems.
+
+The '/proc' directory contains a virtual file system providing process and kernel information as files; populated by the system on the fly.
+
+Aside: a virtual file system provides access to files that are either computed on request, or are mapping into another.
+
+The '/sbin' directory contains essential system binaries.
+
+The '/sys' directory contains information about devices drivers and kernel features.
+
+The '/usr' directory is the second hierarchy  for read-only user data; it contains the majority of (multi-)user utilities and applications. The directory allegedly stands for Unix System resources.
+
+The '/usr/src' directory for example contains the linux source code and the relevent version's headers.
+
+The '/var' directory stores variable files; files whose content is expected to change continually during normal system operation of the system. It'll contains logs, temporary e-mail files, etc.

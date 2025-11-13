@@ -1,0 +1,104 @@
+
+SUID/SGID/Sticky, a clarification:
+
+	Suid and sgid:
+
+		The SUID flag causes executables to be executed under the owner user's permissions and
+		the SGID flag, like SUID, causes executables to be exectued under the group's
+		permissions.
+
+	Setting them:
+
+		You can set these bits with chmod by doing the following:
+
+			~$ chmod g+xs <file_name> # Sets the SGID flag.
+			~$ chmod u+xs <file_name> # Sets the SUID flag.
+
+	Purpose:
+
+		Only the root user can edit the etc/passwd file; the passwd command has the same
+		permissions as the root user with the SUID flag set. 
+
+		The reason why anyone can change their password is because the passwd command has
+		the suid bit set to allow users to execute the passwd command under the 
+                permissions of the root user; commands would otherwise be executed under the
+		permissions of the user that called it.
+
+		As another example, create a file and set its permissions:
+
+		touch file.txt;echo "Hello!" > file.txt;chown root:root file.txt; \
+			sudo chmod o-rwxs,g=rw,u=rw, test.txt
+
+		This will create a file, enter some text into it, and change its ownership and permissions
+		to and for the root.
+
+		Neither you or I can read or write to this file with our user accounts; only root can.
+
+		Now, create a bash file with the following contents and set the permissions and owner to root.
+
+		0----------0
+		#!/bin/bash
+
+		cat file.txt 
+		0----------0
+
+		Set this bash script with the following ownership and permissions:
+
+		chown root:root <file_name>.sh
+
+		chmod u=rwxs,g=rwx,o=rx <file_name>.sh # or chmod 4770 <file_name>.sh.
+
+		This ensure that the bash file executes with the SUID flag set and that others
+		can't write to it; they can both read and execute because we need to be able
+		to allow them to execute the script and we need to allow them to read it
+		to do this.
+
+		After doing so, execute the command.
+
+		Since the bash script executes with the owner user's permissions, it's able
+		to read the file called file.txt.
+
+		You can see this by removing and readding the 's' flag via the command:
+
+		sudo chmod u-s <file_name>.sh
+
+		You'll note that without this flag set, you can execute it, but the
+		internal command that accesses file.txt within, can't, because it 
+		requires root privledges; the bash script in this case is executed
+                under your privledges, which we set to none for the file file.txt.
+
+		Setting both of these flags together causes a collage of permissions between
+		group and owner user.
+
+Numerics:
+
+	4000 - Suid - For running files under users permissions.
+	2000 - Sgid - For running files under group permissions.
+	1000 - Save Text - For ensuring files can't be deleted by others (set to directories).
+
+
+Idiosyncrasies:
+
+	Behaviour:
+
+		Setting SGID to a directory will cause all files created within that directory to be
+		created under the group of the directory, rather than the user creating it; useful
+		for shared directories.
+
+	The sticky 't' bit:
+
+		The sticky bit 't' flag ensures that only the creator of a file is able to
+		delete the file.
+
+		The sticky bit also has a numeric value, that being 1000.
+
+		For files, this would have been used to 'pin in memory,' but it's now ignored.
+
+		When used with directories, it ensures that only root, the file owner, and directory
+		owner can delete a file (even if non-owners have write permissions); this is normally
+		used for /tmp.
+
+	Errors:
+
+		In the output of ls -la, a captial letter will indicate that something is wrong. Normally,
+		it means that execute permissions haven't been set.

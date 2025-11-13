@@ -1,0 +1,65 @@
+
+Cups:
+
+The CUPS interface can be used for printing; this is a service provided by
+apple and can be accessed at https://127.0.0.1:631. You can use
+this to manage the printers on the same network.
+
+You can do many things, like managing the print que, active jobs, etc.
+
+It's a web interface for the CLI.
+
+Postscript printer description:
+
+	A PPD stands for Postscript Printer Description; these are files
+	used to describe the stardards and driver programs used by
+	the printer to ensure printing is properly performed.
+
+	A class is a collection of printers; they're used to ditribute print
+	jobs amongst a  group of printers or provide redunancy or high availablility 
+	when printing.
+
+Generic text printer:
+
+	A generic text printer is printer that can be used to test
+	if creating tasks is possible; this is used for fault finding to
+	ensure the computer is functioning with respect to the interface.
+	They're virtual printers.
+
+Cli:
+
+	There are two semantic forms for using the printing 
+	interface; system V and berekly, both are unix-like 
+	implementations of the same thing.
+
+Adding printers:
+
+	lpadmin - Used to manage printers.
+
+	Lpadmin's flags:
+
+		-D "Description" - Specifies the printer's description.
+		-E "Enable" - Enabled the printer; accepts jobs.
+		-m "Model" - Sets the printer driver using the model name.
+		-o "Option" - Sets the named option; various options for the printer.
+			e.g. name=value - Default value for named PPD option.
+		-x "Delete" - Deletes the named printer.
+		-v "Backend" - Used to specifiy the network address of the printer.
+
+		Using the -v flag with lpinfo displays the available backends and printers; using
+                the -m flagwith lpinfo displays the available drivers on the system.
+
+	You can add a printer using lpadmin like so:
+
+		~$ lpadmin -p <printer_name> -E -v <backend>:<ipv4_address> -m <drv>
+
+Checking for available printers:
+
+	~$ lpstat -p -d # prints the available printers.
+
+	Note that lpstat alone, without flags, will display the jobs for each printer.
+
+Printing:
+
+	~$ lp <file_name> # prints the specified file to the default printer.
+	~$ lp -d <printer_name> <file_name> will print to a specific printer.

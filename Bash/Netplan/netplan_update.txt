@@ -1,0 +1,98 @@
+
+Netplan is a configuration abstraction render; it allows for easy configuring
+of the network interfaces, and who each one should be configured to do.
+
+It will generate a config for a specificed render; it suppports NetworkManager
+and Systemd-networkd.
+
+           [Linux Kernel]
+		 |   
+[Network Manager] [System-d Networkd]
+        |	           |
+        --------------------
+                 |
+         [Backend Config]
+                 |
+             [Net Plan]
+                 |
+        [etc/netplan/*.yaml]
+
+Netplan reads network configurations from /etc/netplan/*.yaml and
+translates them into backend congiurations /run to hand over ctronol
+to a particular networking daemon.
+
+When given each individual interface config, it won't like devices
+automatically come up using DHCP, but each interface needs to specified
+in /etc/netplace in a file with explict YAML settings for the
+chosen render.
+
+Commands:
+
+Netplan generate, uses /etc/netplan to generate the required configurations
+for the renderers.
+
+Netplan apply, applies all configurations for the renderes, may restart them.
+
+Netplan try, tries the config and waits for user confirmation; rolls back
+if network is broken or no config is specified.
+
+Create in VM:
+
+Initialise lxc network interface:
+1. sudo snap install lxd; sudo systemctl start lxd
+2. lxd init --minimal
+3. lxc network create netplan-bridge-0 --type=bridge
+4. lxc init --vm ubuntu:23.10 netplan-test-0
+5. lxc network attach netplan-bridge-0 netplan-test-0 eth1
+6. lxc start netplan-test-0; lxc exec netplan-test-0 -- bash
+
+This creates an lxc container; these are containerised linux environments, being
+completely isolated from the rest of the operating system.
+
+Quite good if you want to cordon specific functionalities.
+
+7. ip link
+
+enp5s0 is the primary interface; connected to default LXD network.
+enp6s0 is the second interface added; connected to the created network.
+
+In the shell write, netplan; this produces the available options:
+
+//
+options:
+  -h, --help  show this help message and exit
+  --debug     Enable debug messages
+
+Available commands:
+    help      Show this help message
+    apply     Apply current Netplan config to running system
+    generate  Generate back end specific configuration files from /etc/netplan/*.yaml
+    get       Get a setting by specifying a nested key like "ethernets.eth0.addresses", or "all"
+    info      Show available features
+    ip        Retrieve IP information from the system
+    set       Add new setting by specifying a dotted key=value pair like ethernets.eth0.dhcp4=true
+    rebind    Rebind SR-IOV virtual functions of given physical functions to their driver
+    status    Query networking state of the running system
+    try       Try to apply a new Netplan config to running system, with automatic rollback
+//
+
+Each command has its own set of flags.
+
+For e.g. netplan status --all gets the status of all network interfaces.
+
+Configuration files:
+
+You can check your configuration files using cat /etc/netplan/
+
+There're two means of editing the netplan configuration file; you can use either netplan set to set
+the command in a non-interactive way, or you could manually set the configuration in the configuration file.
+
+The latter is what I prefer to do.
+
+For example, if you wanted to create a second network interface called enp6s0 and enable dhcp, you could run:
+
+netplan set --origin-hint second-interface ethernets.enp6s0.dhcp4=true
+
+Note that in doing either, you don't automatically apply the new settings to the system.
+
+To do that, you can use either netplan apply or try.

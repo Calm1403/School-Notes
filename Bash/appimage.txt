@@ -1,0 +1,23 @@
+
+App images:
+
+	App images are a means for upstream devs to provide binaries for Linux users
+	the same way they could do for other operating systems.
+
+	It permits the packaging of applications for any linux based operating system.
+
+	App images come with all the dependencies that cannot be assumed to be
+	part of each target system; will run on most linux ditributions without
+	much modification.
+
+	When an AppImage is run, the executable header of the AppImage, called
+	the runtime, is executed; this mounts the embedded read only file system image
+	in a temporary location and launches the payload application.
+
+	An AppImage is essentially an encapsulation of executable code and a
+	read only file system. 
+
+Running an app image:
+
+	1. Make the app image executable via chmod +x <appimage>.AppImage
+	2. Run the executable via ./<appimage>.AppImage
