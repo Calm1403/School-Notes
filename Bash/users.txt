@@ -76,7 +76,6 @@ Numerics:
 	2000 - Sgid - For running files under group permissions.
 	1000 - Save Text - For ensuring files can't be deleted by others (set to directories).
 
-
 Idiosyncrasies:
 
 	Behaviour:
