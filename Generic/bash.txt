@@ -1,11 +1,30 @@
 
+Symbols:
+
+  The dash:
+    The dash symbol allows you to specify the standard I/o streams, as apposed to a file;
+    for example:
+
+      ~$ mkisofs -V Photos -r /home/user/photos | cdrecord -v dev=/dev/dvdrw -
+
+    Cdrecord will take the standard output from mkisofs as standard input; places
+    this input at the front of the command.
+
+    Note that the meaning of this symbol is ambiguous; commands will interpret it differently.
+
+    For example, using the dash with the change directory command:
+
+      ~$ cd -
+
+    will return the user to the directory visited prior.
+
 Preface:
 	Symbols surrounded by box brackets are optional.
 
 Interactivity:
 
 	A bash shell can be invoked either interactively, or non interactively; this means that
-        the shell is either recieving input from the keyboard, or a file respectively.
+  the shell is either receiving input from the keyboard, or a file respectively.
 
 Compound commands:
 

@@ -1,0 +1,15 @@
+
+SSH:
+
+  SSH is a remote shell program; it allows you to run a computer's shell session remotely.
+
+  Note that it may also be able to remotely execute X11 connections, arbitrary TCP ports
+  and Unix-domain sockets can also be forwarded over the secure channel.
+
+PORTS:
+
+  Securely, ssh will use port 22; it'll use port 23 typically in the case of an insecure
+  telnet-like connection.
+
+  Telnet was written as a remote shell program during the first stages of ARPANET; it was written
+  in 1969, later being replaced by open ssh in the year 2000, 31 years later.
