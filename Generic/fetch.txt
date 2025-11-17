@@ -1,0 +1,86 @@
+
+Core Dumped:
+
+  Core dumped refers to the displacement of an active process' execution context
+  (it's memory usage, program counter, stack pointer and so on) to a file
+  on abnormal termination.
+
+Fetch Execute Cycle:
+
+  Units and Registers:
+    MAR (Memory Address Register):
+    
+      The memory address register holds the address of the next value to be
+      read from main memory.
+
+    MDR (Memory Data Register):
+
+      This is a two way register; it data is both read and written to this
+      register.
+
+      On read, the data addressed by the location in the MAR is used to
+      populate the MDR.
+
+      On write, data in the MDR is written to the location in the MAR corresponding
+      to some point in the main memory.
+
+    CC (Control Unit):
+
+      The CC manages the coordination of the CPU; coordinates communications
+      between I/o devices and other units, including their timing and the
+      signals sent to them.
+
+    PC (Program Counter):
+
+      The program counter contains the address of the next instruction to be
+      executed by the control unit.
+
+    IR (Instruction Register):
+
+      The instruction register holds the data representing the CPU instruction.
+
+      The instruction register is typically split into two parts; we call them
+      IR(OP) and IR(ADDR)
+
+  Operations of the fetch execute cycle.
+
+    The PC is set to contain the address of the next instruction; this is then copied
+    into the MAR.
+
+    The CPU does this by sending a read request, through the control
+    bus, to the RAM, to tell the RAM to return the address
+    currently being pointed to by the PC, passing the relevant address through
+    the address register.
+
+    The data within RAM referred to by the MAR is then placed
+    within the MDR, being passed through to it on the data bus, then
+    to the IR through the same means if the data is an opcode; it's not immediately 
+    copied to the instruction register because it may be another kind of data.
+
+    It should be noted that the value within the instruction register is segmented
+    being composed of one IR(OP) opcode segment, and at most two IR(ADDR)
+    segments, and that the data bus is bidirectional for both reading and writing.
+    The most significant bits tend to compose the opcode.
+
+    Then, the IR(OP) segment of the instruction is then decoded by the CC.
+
+    The PC is then incremented by one.
+
+    Overview:
+
+      1. MAR <- PC
+      2. MDR <- <MAR>
+      3.  IR <- MDR
+      4.  PC <- PC + 1
+
+    Suppose that the opcode represented by IR(OP) was LOAD <A>, B; this corresponds
+    with loading the accumulator with the value B at the address <A>.
+    
+    The IR(ADDR) portion(s) of the value within the instruction register corresponds to
+    an operand, which is a value used in an operation.
+
+    With the LOAD example, LOAD <A>, B has the following register usage:
+
+      1. MAR <- IR(ADDR)
+      2. MDR <- <MAR>
+      3.  AC <- MDR # Now we know its data.
