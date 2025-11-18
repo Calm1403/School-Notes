@@ -1,41 +1,86 @@
 
-DNS stands for domain name system; servers that are part of the domain name system
-are tasked with the resolution of domains to addresses.
+DNS:
 
-A local resolver will communicate with the root domain name server to get the servers
-associated to a particular top level domain and thus thw IP of the server of the
-service under that domain; a DNS zone represents a portion of the
-DNS namespace that an organisation manages, which allows managers
-to have a more granular control over the DNS components, such as an authoritative nameserver.
+  DNS stands for domain name system; servers that are part of the domain name system
+  are tasked with the resolution of domains to addresses.
 
-A DNS zone is a portion of the DNS namespace managed by specific administrator.
+  They take a URI, and return the address of the service server associated to that URI.
 
-A DNS zone could be througt of as a collection of domain name spaces, where a domain name
-space is a collection of domain names. 
+  A local resolver will communicate with the root domain name server to get the servers
+  associated to a particular top level domain and thus the IP of the server of the
+  service under that domain.
 
-A DNS zone is implemented in the configuration system of a DNS server; a text file that
-starts with the special DNS record SOA, meaning start of authority and contains
-all records for the resources described within the zone.
+DNS Stages:
 
-A DNS record is an instruction that lives within an authoritative DNS server, providing information
-about a domain and what IP address is associated with that domain and how to handle requests for it.
+  DNS recursor/resolver:
 
-Tells the internet where to find a domain's address.
+    This is a server designed to receive queries from client machines
+    through applications, such as a web browser; its typically
+    responsible for making additional requests in order to satisfy
+    the DNS query.
 
-These records have a time to live, which implies the number of time taken before a server
-refreshes.
+    The resolver may be on the client computer itself; a service
+    called systemd-resolved is available on Linux for this
+    exact purpose.
 
-Records:
-A               - Holds the adress of a domain (IPv4).
-AAAA 		- The record containing the IPv6 address for a domain.
-CNAME record    - Forwards a domain or subdomain to another domain; doesn't provide an IP address.
-MX record       - Directs mail to an email server.
-TXT record      - Lets an admin s tore text notes in the record; email security.
-NS record  	- Stores the name server for a DNS entry. 
+    It'll typically make a query to a root DNS server.
 
-Under the root zone, the domain namespace is organised in a layout of subdomains below
-the root domain '.'. The period is typically implicit with most URIs.
+  Root name server:
 
-The domain name system is segregated into this way so subdomains of a domain can be
-managed individually, and independently. 
+    The root name server is the second step taken to translating
+    domains into IP addresses; it's a collection of server addresses
+    for top level domain name servers.
+
+  TLD name server:
+
+    This holds the servers associated to the last portion of a domain
+    name; '.com' is a valid example of TLD.
+
+    This is a collection of server addresses, under
+    the particular TLD header, for authoritative name
+    servers for services hosted under that TLD.
+
+  Authoritative name server:
+
+    This is the last stop in the query; if the name server
+    has access to the requested record, it'll return the
+    address for the requested domain name back to the DNS resolver.
+
+DNS Zones:
+
+  A DNS zone represents a portion of the
+  DNS namespace that an organisation manages, which allows managers
+  to have a more granular control over the DNS components, such
+  as an authoritative name server.
+
+  A DNS zone is implemented in the configuration system of a DNS
+  server; a text file that starts with the special DNS record SOA,
+  meaning start of authority and contains all records for the
+  resources described within the zone.
+
+DNS Records:
+
+  A DNS record is an instruction that lives within an authoritative 
+  DNS server, providing information about a domain and what IP 
+  address is associated with that domain and how to handle requests 
+  for it.
+
+  These records have a time to live, which implies the number of time 
+  taken before a server refreshes this information.
+
+  Record types:
+
+    A - Holds the adress of a domain (IPv4).
+    AAAA - Holds IPv6 address for a domain.
+    CNAME record - Forwards a domain or subdomain to another domain.
+    MX record - Directs mail to an email server.
+    TXT record - Lets an admin store text notes in the record.
+    NS record - Stores the name server for a DNS entry.
+
+  Under the root zone, the domain namespace is organised in a layout
+  of subdomains below the root domain '.'. The period is typically
+  implicit with most URIs.
+
+  The domain name system is segregated into this way so subdomains of 
+  a domain can be managed individually, and independently.
 

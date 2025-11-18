@@ -1,0 +1,34 @@
+
+Ports:
+
+  A port is a point where network connection start and end.
+
+Justification:
+
+  They're software based and managed by the computer's OS.
+
+  Ports allow for an easy means of identifying particular
+  services, with each service being associated to a respective
+  port.
+
+  These ports help the computer understand what to do with
+  the data that they receive; they're standardised across
+  all the network connected devices.
+
+  For example, port 21 specifies ssh; 80 specifies HTTPS.
+
+Distinction to IP addresses:
+
+  IP address enable messages to got
+  to and from specific devices, where
+  port numbers allow the targeting
+  of particular services within those
+  devices; a socket is a combination
+  of these two ideas.
+
+OSI Layer:
+
+  Ports are part of the TCP/UDP transport layer.
+
+  Both networking protocols specify what ports
+  that packets will go through.

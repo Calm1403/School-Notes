@@ -1,0 +1,198 @@
+Printer, as of the current moment (might not be up to date):
+
+  This document is designed to give you a foot hold into using CUPS.
+
+  The information in this segment just describes the conventions. 
+
+  Nmap scan report for EPSON05C3B0.local (192.168.68.57)
+  Host is up (0.025s latency).
+  Not shown: 995 closed tcp ports (conn-refused)
+  PORT     STATE SERVICE
+  80/tcp   open  http
+  443/tcp  open  https
+  515/tcp  open  printer
+  631/tcp  open  ipp
+  9100/tcp open  jetdirect
+  MAC Address: F8:25:51:05:C3:B0 (Seiko Epson)
+
+  Commands:
+
+    Note that hashtags '#' next to command represent comments; they're informational, and don't add anything to the command.
+
+    Commands will be indicated using the string '~$' as if it were used in a prompt.
+
+  Terminology:
+
+    The phrase 'printer entry' will be used to describe a network printer added to the
+    cups networking interface.
+
+  Emphasis: 
+
+    I'd like to emphasise this completely: a printer entry is not the network printer associated to it; it represents a
+    networking printer in the printer interface.
+
+Cups printer interface:
+
+  Why use CUPS:
+
+    This is the interface that you use to print from applications like word processors, web browsers, etc;
+    you just don't tend to use the command interface, being provided printing functionality
+    through a graphical interface instead by the applications named, as well as a variety of others.
+
+    Basically, on any 'Unix like' system, MacOS and Gnu/Linux being popular, you actually do use this all the time.
+
+    It converts page descriptions, things like 'draw a line here,' and 'display an image here,' into things that
+    your printer understands, using ppd printer drivers.
+
+    It's normally used in administration, being used to assign printing permissions to users on multi user operating systems
+    on networks with printer devices, but is also great for home usage too for those with an affinity for the command line.
+
+Installation:
+
+    To use cups, you'll need to install both the cups and the ghostscript packages.
+
+    For arch linux:
+
+      ~$ sudo pacman -Sy ghostscript cups
+
+    Then, enable the server using systemctl; this enables the cups background process.
+
+      ~$ sudo systemctl start cups
+
+    Note that 'Ghostscript' is an interpreter of the portable document format (PDF) language; its used by cups for its
+		purpose, presumably.
+
+  Check for network printers:
+
+    To do this, you'll need to find the local private IP address of the network printer on the local access network.
+
+    You can typically do this by checking the network printer's settings, but if not, I personally like to use Nmap.
+
+      ~$ nmap -Pn -p 631 <network ip address>
+
+    You could also use this in conjunction with grep and the name of the printer to
+    get it directly without the extraneous output of other devices on the network.
+
+      ~$ nmap -Pn -p 631 <network ip address> | grep <printer name>
+
+    This will take the output of nmap and place it into grep, which will search for the target string, being the printer in our case.
+
+    The -p flag, clarification:
+
+      Note that port 631 is the tcp port that printer devices use when using the internet printer protocol; they may use other
+      printing services, in which case it may also be good to use nmap to scan the network using a TCP scan to ensure definitely
+      what ports for particular services are being opened on the printer device, to know the available means of implementing a cups
+      entry, as we'll discuss.
+
+    Internet protocol address clarification:
+
+      If you want to know, private IP addresses are addresses that don't have access to the internet (it DOESN'T mean they're inexploitable).
+
+      Private addresses are different to public IPs, which are the IP addresses that private IP address are 'routed' by for devices under those
+      private IPs to be able to access the internet; they're given to you by your internet service provider.
+
+      If I query this public address, I could very easily get the private addresses of devices on that network, which is why its generally not a good idea
+      to tell people your public IP address (you do this on the internet all the time, which is why you shouldn't click on dodgy links).
+
+      There's typically only one public IP per network; if you were to write
+
+        ~$ sudo curl ipinfo.io/ip
+
+      into the terminal on one device, I guarantee it'll be the same on another (providing curl is installed).
+
+  Add printer:
+
+    The generic form of this action will typically look like:
+
+      ~$ lpadmin -p <printer name> -E -v <service>:<local address><interface> -m <driver> 
+
+    Example adding a printer (in our case):
+
+      ~$ sudo lpadmin -p Epson -E -v ipp://192.168.68.57:631/ipp/print -m everywhere
+
+    Notes:
+
+      Flag idiosyncrasies:
+
+        -p specifies the name of the printer.
+        -E specifies to permit the usage of this cups addition for users of the device.
+        -v specifies the means of connection.
+        -m specifies the driver (quite important; more in the 'finding info about printers' section).
+
+        -E enables the entry on the computer, not the printer itself and thus enabling it 
+        allows users of the device to use that entry; disabling prevents them, meaning
+        disabling the entry WON'T TURN OFF THE PRINTER, just to clarify.
+
+        YOU NEED TO SPECIFY -E AFTER -p to enable it; specifying it before causes the printer to use
+        encryption, rather than enabling; use -E before -p to enable encryption, and -E after to
+        enable the printer entry.
+
+        If you accidentally specify -E the wrong way around:
+
+          You can enable encryption using:
+
+            ~$ sudo lpadmin -E -p <printer name> # in this case <printer name> is 'Epson.'
+
+          and you can enable the entry using:
+            
+            ~$ sudo lpadmin -p <printer name> -E # in this case <printer name> is 'Epson.'
+
+      Driver clarification:
+
+        Note that the 'everywhere' driver, used above in the example, is used by all printers and is a good default
+        if you don't know what driver your printer uses.
+
+        The driver tells the printer how to interpret incoming printing jobs; the service and local address specify:
+
+          1. Which service the printer entry is to use (the service specified).
+          2. The local address specifies the private, local address of the printer on the network (the address specified).
+
+        There's more about drivers in the 'finding info about a printer' section, which includes finding
+        the driver for the printer (you'll want to do this to print things correctly).
+
+      Printer idiosyncrasies:
+
+        The local address of the printer may change because of a thing called DHCP, the dynamic host configuration protocol,
+        which is used by routers to assign addresses to devices.
+
+        Depending on the printing protocol being used by the printer, the entry will have (a) differing interface(s); as an example
+        the internet printing protocol uses the interface ipp/print in the example above.
+
+        A printer may use multiple different printing protocols, if not all; sockets, https and ipp are the main ones.
+
+      Finding info about a printer:
+
+        ~$ lpinfo -m # finds available PPD driver names; lpinfo -v # finds available service types.
+
+        If you want to find a particular driver for a printer, use the grep command in conjunction with the above
+        like so using the following general form:
+
+          ~$ lpinfo -m | grep <printer name>
+
+        In the case of our epson, 'printer name' will just be 'epson,' producing:
+
+          ~$ drv:///sample.drv/epson24.ppd # result of lpinfo -m | grep epson
+
+        Rather than using the everywhere driver, then, we could use this:
+
+          ~$ sudo lpadmin -p Epson -E -v ipp://192.168.68.57:631/ipp/print -m drv:///sample.drv/epson24.ppd
+
+  Checking the printer entry status:
+
+    ~$ sudo lpstat -p -d <printer name>
+
+  Printing:
+
+    ~$ sudo lp -E -d Epson printer.txt
+
+    The -E option specifies to use encryption during connection; -d specifies the destination,
+    which in our case is the named destination 'Epson.'
+
+  Removing printer entries:
+
+    ~$ sudo lpstat -x <printer name>
+
+  Final note:
+
+    This is the bare minimum needed for setting up a printer entry and printing using the CUPS service.
+

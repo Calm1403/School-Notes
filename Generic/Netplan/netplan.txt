@@ -1,36 +1,53 @@
 
 You can use netplan to configure the networking for an interface.
 
-You can select whether or not it's configured either through a static IP or DHCP
-.
+You can select whether or not it's configured either through a static IP or DHCP.
 
 It can be used to generate configurations for the underlying network manager 
 using netplan generate; translates YAML configs into the underlying format and
 places these in the configuration directories for the network daemon.
 
-netplan apply; applies the current Netplan configuration to a running system.
+Netplan apply:
 
-netplan try; will automatically reset the configuration if the user
-doesn't confirm the change.
+  ~$ netplan apply
 
-netplan get; returns the configurations under /{etc,lib,run}/netplan/*.yml.
+  Applies the current Netplan configuration to a running system.
 
-It kinda collages them together.
+Netplan try:
 
-netplan set; this will write a given key value pair to /etc/netplan and
-validate the format.
+  ~$ netplan try
 
-netplan status; displays the current network status.
+  Will automatically reset the configuration if the user doesn't confirm the change.
+
+Netplan get:
+  
+  ~$ netplan get
+
+  Returns the configurations under /{etc,lib,run}/netplan/*.yml. It kinda collages them
+  together.
+
+Netplan set:
+
+  ~$ netplan set
+
+  This will write a given key value pair to /etc/netplan and
+  validate the format.
+
+Netplan set:
+
+  ~$ netplan status
+
+  Displays the current network status.
 
 To use netplan to enable a network interface you can use the command:
 
-netplan set --origin-hint second-interface ethernets.enp6s0.dhcp4=true
+  ~$ netplan set --origin-hint second-interface ethernets.enp6s0.dhcp4=true
 
-The --origin-hint second-iinterface portion specifies the name of the file
-where the configuration for this file will be stored.
+  The --origin-hint second-interface portion specifies the name of the file
+  where the configuration for this file will be stored.
 
-The second portion specifies the interface; in this case that it's an
-ethernet interface called enp6s0 that makes use of dynamic host configuration
-to allocate an ipv4 address.
+  The second portion specifies the interface; in this case that it's an
+  ethernet interface called enp6s0 that makes use of dynamic host configuration
+  to allocate an ipv4 address.
 
-You'll want to ensure that the interface actually exists too.
+  You'll want to ensure that the interface actually exists too.

@@ -1,0 +1,13 @@
+
+Lsof:
+
+  Lsof allows you to display the currently active file descriptors for
+  devices, regular files, sockets and more.
+
+Network file descriptions:
+
+  To display the active file descriptions for network files, you can write:
+
+    ~$ sudo lsof -VHPi
+
+  You need to provide the sudo command to permit lsof's detection of privledged files.

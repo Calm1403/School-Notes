@@ -1,23 +1,30 @@
 
 Definition of scanning:
-  This allows us to check for live systems, open ports, scan beyond intrusion detection systems,
-  perform 'banner grabbing', scan for vulnerabilities, draw network diagrams, prepare proxies
+
+  This allows us to check for live systems, open ports, scan
+  beyond intrusion detection systems, perform 'banner grabbing',
+  scan for vulnerabilities, draw network diagrams, prepare proxies
   and more.
 
-  Generally, this is the process of determining a target's vulnerabilities.
+  Generally, this is the process of determining a target's
+  vulnerabilities.
 
 Fragmentation:
-  This breaks a network packet into smaller chunks; r educes the chance of being detected
-  by the IDS.
 
-  Colasoft packet builder allows for the creation of custom network packets.
+  This breaks a network packet into smaller chunks; reduces the
+  chance of being detected by the IDS.
+
+  Colasoft packet builder allows for the creation of custom network
+  packets.
 
 ICMP - Internet Control Message Protocol:
-  This is a support protocol; its used by network devices to send
-  general operational information when communicating with IP addresses.
 
-  An error, for example, is indicated through this protocol when a host or
-  router can't be reached.
+  This is a support protocol; its used by network devices to send
+  general operational information when communicating with IP
+  addresses.
+
+  An error, for example, is indicated through this protocol when a
+  host or router can't be reached.
 
   Codes:
   0: Echo reply; answer to type eight.
@@ -38,11 +45,12 @@ ICMP - Internet Control Message Protocol:
 
 NMAP:
   Speeding Scans:
-    For things like class-A and B addresses, having a lot of hosts, most
-    networks that use these typically only use the first few addresses as if
-    it were a class C.
+    For things like class-A and B addresses, having a lot of hosts,
+    most networks that use these typically only use the first few
+    addresses as if it were a class C.
 
-    You can also apply the --fast-scan flag or mess with the timing templates.
+    You can also apply the --fast-scan flag or mess with the timing
+    templates.
 
   Firewall Scanning:
     Stateful firewalls analyse the context of internet traffic.
