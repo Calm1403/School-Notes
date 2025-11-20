@@ -1,4 +1,7 @@
 
+Despite the name, this will be a collection of notes pertaining
+to a variety of things that are low level
+
 Core Dumped:
 
   Core dumped refers to the displacement of an active process' execution context
@@ -8,6 +11,7 @@ Core Dumped:
 Fetch Execute Cycle:
 
   Units and Registers:
+
     MAR (Memory Address Register):
     
       The memory address register holds the address of the next value to be
@@ -21,8 +25,8 @@ Fetch Execute Cycle:
       On read, the data addressed by the location in the MAR is used to
       populate the MDR.
 
-      On write, data in the MDR is written to the location in the MAR corresponding
-      to some point in the main memory.
+      On write, data in the data in the MDR is written to the location in the MAR 
+      corresponding to some point in the main memory.
 
     CC (Control Unit):
 
@@ -40,7 +44,7 @@ Fetch Execute Cycle:
       The instruction register holds the data representing the CPU instruction.
 
       The instruction register is typically split into two parts; we call them
-      IR(OP) and IR(ADDR)
+      IR(OP) and IR(ADDR).
 
   Operations of the fetch execute cycle.
 
@@ -84,3 +88,200 @@ Fetch Execute Cycle:
       1. MAR <- IR(ADDR)
       2. MDR <- <MAR>
       3.  AC <- MDR # Now we know its data.
+
+DMA:
+
+  DMA is an acronym for 'direct memory access.' It allows
+  hardware to access main system memory independently to
+  the CPU.
+
+  With DMA, the CPU first initiates the transfer,
+  then performs other tasks with the transfer in progress,
+  then an interrupt to the CPU from the DMA controller
+  tells the CPU that the operation is finished.
+
+  This is useful if the CPU cannot keep up with the
+  rate of the data transfer, or when the CPU needs to
+  perform work while waiting for a slow I/o transfer.
+
+  The idea of DMA could lead to cache coherency problems.
+
+  For example, if a CPU reads a value X in memory,
+  subsequent versions of X will be appended to the
+  cache; if the DMA controller makes an access to X
+  for a component of the computer, and the cached value
+  hasn't been flushed to the main memory, the
+  DMA controller will read a stale value.
+
+CPU Cache:
+
+  A cache is a hardware component that stores
+  data so future requests for that data
+  can be served faster; a cache hit occurs when
+  the requested data can be found within the cache,
+  a cache miss if not.
+
+  The cache is typically implemented using static
+  random access memory, which uses a latching mechanism
+  to store each bit of information. This memory
+  doesn't require to be refreshed, unlike DRAM.
+
+  It does tend to be more expensive to implement as
+  opposed to cache memory.
+
+  There is a trade-off between size and speed in
+  the process of designing memory: a larger size makes
+  signals travel larger physical distances, causing
+  delay.
+
+  The buffer provided by a cache benefits the
+  problems with latency and throughput; it could take
+  hundreds of clock cycles before a modern four giga
+  hurtz processor reaches DRAM.
+
+Address bus:
+
+  The address bus is used to specify an actual
+  address; when the processor or a DMA
+  device reads or writes to an address, that address
+  is specified on the address bus.
+
+Data bus:
+
+  The data bus is used to transfer data to and from each
+  component of the computer.
+
+  The bandwidth is the capacity of the bus, specifying
+  the amount of data.
+
+Control bus:
+
+  This is used to coordinate, send signals, to other
+  devices within the computer.
+
+  While the function is similar to the other buses,
+  this is used to carry commands to the CPU.
+
+  It also allows devices to return signals to the
+  CPU, to communicate the state of the device.
+
+Volatile Memory:
+
+  Volatile memory means that data in this memory gets destroyed on shutdown.
+
+Mutability:
+
+  Mutability determines an objects ability to be altered; mutable memory can
+  be accessed and changed.
+
+  Mutable does strictly make it volatile through; they mean different things
+  in the context. Memory is volatile if its state is reset on shutdown,
+  mutable if it can be altered to contain different values, have variant state.
+
+Static Ram:
+
+  This is a type of ram that uses latching circuitry; uses flip flops.
+
+  SRAM is often more  expensive than DRAM in terms of silicon usage, being both 
+  faster and not requiring to be periodically refreshed.
+
+  The reason for the expense is partially due to the requirement of more
+  transistors.
+
+  This is typically how the cpu cache is implemented.
+
+Dynamic Ram:
+
+  The defining characteristic of DRAM is that it requires to be refreshed.
+
+  This is because each bit of memory is sotred as an electrical charge within
+  a small capacitor on the chip; with the passage of time, the charge
+  in the memory cell dissipates away.
+
+  Consequently, this means we need to refresh the memory constantly, to
+  prevent the memory from decaying over time; this is where the
+  memory speed metric for enterprise memory derives in hurtz.
+
+  The overhead in memory is not large enough to significantly
+  slow down the memory operation.
+
+  SRAM doesn't need to be refreshed because it requires four to six transistors,
+  compared to the single transistor and capacitor for DRAM; this also means 
+  that it's larger and more expensive per bit.
+
+EPROM:
+
+  An EPROM is an erasable, programmable, read only memory type; is a type of
+  programmable, erasable read only memory.
+
+ROM:
+
+  This means read only memory; this is an example of immutable memory.
+
+Software:
+
+    NOS:
+
+      A network OS (NOS) is a specialised operating system for a network device, which
+      could include things like the Intel Management System, routers and switches.
+
+      Historically, operating systems with network capabilities were described
+      by this term, allowing personal computers to access the internet and participate
+      in a client server architecture where a server enabled multiple clients to
+      share resources, perhaps printing services.
+
+    MUOS:
+
+      A mutli-user operating system allows many users to take advantage of a computer's
+      hardware; the operating system must ensure that the requirements of each user are
+      balanced.
+
+      It also ensures that the programs being used by them use sufficient
+      and separate resources; done so that at problem with one
+      user doesn't effect the entire group of users.
+
+      An example of the multi-user design philosophy would be Unix. Allowing remote access
+      to the unix shell for various users at the same time.
+
+    RTOS:
+
+      A real time operating system is an operating system that
+      guarantees the execution of a task within a fixed time
+      constraint; they often ensure the implementation of
+      multi tasking, interrupt level sufficiency and multithreading.
+
+    Distributed System:
+
+      A distributed system is a software system in which components
+      located on networked computers communicate and coordinate
+      their actions by passing messages.
+
+      The components interact with each other in order to achieve a common goal
+      across computers; global clock, independent failure of components and a
+      lack of a global clock.
+
+    Threading:
+
+      Multithreading is the state of a program's execution where multiple
+      execution contexts are involved.
+
+      A thread is an independent instance of a program's execution, having a
+      set of distinct values for the processor registers; since this includes
+      the instruction register, it controls what it executes. What I mean by
+      this is that a thread will naturally have its own execution context.
+
+      It will have a program counter, stack pointer, memory bound, register
+      state, the whole lot with respect to it.
+
+      They're the software unit affected by the control flow of the program;
+      affected by things operating on the instruction pointer like function
+      calls, goto and loops; this is where the term 'thread' comes from,
+      because these control flow operations weave the flow execution through
+      the program code.
+
+      Without multithreading, a single thread executes the program
+      in sequence.
+
+      A thread can be thought of as no more than than a set of register values.
+
+  
