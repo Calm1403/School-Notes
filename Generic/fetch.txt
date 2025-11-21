@@ -284,4 +284,181 @@ Software:
 
       A thread can be thought of as no more than than a set of register values.
 
+  Operating system (MUOS):
+
+    The operating system has typically three main tasks:
+
+      1. Allocate resources between processes; decide when
+         they'll receive CPU time or memory space.
+
+         The operating system will give a fixed
+         amount of memory to the processes each
+         in order to ensure that one process
+         cannot monopolise the computer's
+         limited hardware.
+
+         Aside (virtual memory):
+
+           Virtual memory is an abstraction of
+           contiguous memory; memory is allocated
+           arbitrarily by the operating system's
+           memory allocator.
+
+           We often call the virtual memory
+           of a program its virtual address space,
+           or just simply address space; memory
+           that it has access to.
+
+         Aside (memory allocator):
+
+           A memory allocator is typically implemented through
+           means of a free list in a fixed-size blocks allocator
+           implementation; the free list keeps note
+           of what elements are free for use in memory and
+           their size. This is typically prone to
+           fragmentation, and since the system is inherently
+           arbitrary, it only emphasises the R in RAM.
+ 
+           Other implementations may include buddy blocks,
+           where in this system allocations of memory
+           may be made in several pools as opposed to one.
+
+           Each of the blocks or pools may be a power of two in size;
+           each allocation is connected by a linked list
+           in the pools for later use, where if a smaller size
+           than available is requested, the smallest available size
+           is selected and split, the process repeating until
+           the request is complete.
+
+      2. Provide an interface for a means of accessing
+         the computer's hardware resources; physical memory
+         access is an example, virtual memory being
+         the abstraction where the interface, in the
+         case of the C programming language, is
+         the stdlib's malloc and free functions.
+
+      3. Provide common services for interfacing and accessing
+         devices; enables applications to be ran
+         on different hardware through one common interface.
+
+         This is a generic overview of the second mandated
+         feature; two is intrinsically important which is why it
+         gets it's own explicit segment.
+
+  Layers to the operating system:
+
+    Operating systems have layers.
+
+    The layered structure mandates that different services
+    of the operating system are split into the various
+    layers.
+
+    The outer most layer has the user interface
+    layer; the inner most layer has the hardware
+    layer. A particular layer can access all the
+    layers present below it, but not above 
+    it; layer n-1 ca access layer n-2 through to
+    zero, but cannot access layer n.
+
+    The layers of an operating system are typically
+    hardware enforced; the x86 architecture has typically
+    four protection rings, where a protection ring is typically
+    one or more layers of security.
+
+    They're typically six layers of an operating system
+    generally; it may differ depending on the operating
+    system.
+
+    1. Hardware layer (second inner most):
+
+    There are various types of devices that we attach to the computer;
+    peripheral devices may include the mouse, keyboard, printer, there's
+    many I could name; these devices are managed at the hardware layer,
+    this layer having the most authority, being attached directly
+    to the kernel.
+
+    2.
+
+    CPU scheduling layer:
+
+    The scheduling is managed at this layer of the operating system.
+    This is responsible for managing how many processes will be
+    allocated to the CPU.
+
+    Note that only one process may be allocated to the CPU at
+    any given time; computers swap out these processes really
+    quickly to simulate the asyncronisation.
+
+    3. The memory management layer:
+
+    This is concerned with swapping memory in and out; when the computer
+    runs, executing programs are allocated to main memory as processes and
+    when they finish their purpose they're removed from main memory.
+
+    4. Process management layer:
+
+    The priority of the process is managed within this layer; what priority
+    it takes over the CPU's resources.
   
+    It's also the place where a process's place on the schedule is determined.
+
+    5. I/o layer:
+
+    I/o buffers are managed in this layer; computer buffers store data
+    temporarily, because of the slow operation of I/o devices, storing
+    a large amount of data to send it off in one single operation as
+    opposed to multiple smaller operations.
+
+    Keyboards typically have buffers attached to them in contexts like
+    terminal prompts, such as macro processors for executing commands.
+
+    This is more due to the fact that it's operationally inefficient to
+    determine the purpose of a symbol in sequences of characters, and it's
+    much easier for the user to determine what they want to tell the shell
+    to do if they see the state of the buffer associated to the keyboard.
+
+    Keyboards may not always have a buffer associated to them; in the context
+    of text editors like vim, raw mode terminals are used, where input is
+    read in a sequence of characters as opposed to buffer dumps.
+
+    In fact, the buffer of a shell gets populated by characters sequentially
+    too.
+
+    6. User program layer (outer most):
+
+    This is the layer associated to programs; this is typically the user interface.
+
+    There are two kinds of software, bespoke and suits; bespoke software
+    refers to custom built software, being designed to satisfy the
+    needs of the one client or perhaps more joint clients, and off the
+    shelf software is designed to satisfy the requirements of a large user
+    base, only providing features of use to a majority of the customers.
+
+    0. Kernel (inner most layer):
+
+    This is the core part of the computer system and typically
+    represents a collective implementation of the operating
+    system features that were outlined above.
+
+Firewalls:
+
+  A firewall is a system designed to prevent unauthorised access to and
+  from a private network; they can be both hardware and software.
+
+  They're frequently used to prevent unauthorised internet users
+  from accessing private networks.
+
+  All messages entering or leaving the intranet (private network)
+  pass through the firewall, blocking those that don't meet
+  a specified criterion, typically performing a technique called
+  packet filtering to ensure that packets entering or leaving the
+  network meet a user specified criterion.
+
+Antivirus software:
+
+  A utility that searches a hard disk for viruses are removes any
+  that are found; these programs include an auto update feature
+  that enabled the program to download profiles of new viruses
+  so that it can check for the new viruses as soon as they're 
+  discovered.
+
