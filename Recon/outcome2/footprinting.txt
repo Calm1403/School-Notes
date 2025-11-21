@@ -1,26 +1,65 @@
 Active:
-– Interaction with the target
-– Could be a company or a person, e.g.
-  • Contacting on social media
-  • Making a phone call to the target
-  • Doing a port scan
-Passive:
-– Gain information on a company or person, e.g.
-  • ‘Google’ search on Microsoft
-  • Looking at social media information such as Facebook posts, e.g.
-– Products they are launching
-– Employees and their titles
 
-Finger printing allows you get various extents of information on
+  – Interaction with the target
+  – Could be a company or a person, e.g.
+    • Contacting on social media
+    • Making a phone call to the target
+    • Doing a port scan
+
+Passive:
+
+  – Gain information on a company or person, e.g.
+    • ‘Google’ search on Microsoft
+    • Looking at social media information such as Facebook posts, e.g.
+  – Products they are launching
+  – Employees and their titles
+
+Finger printing allows you to get various extents of information on
 security postures; what OS is being used, what services are they running,
 are they using cloud? It also helps identify vulnerabilities. All
 for a particular or range of targets.
 
 Tools:
-- Nikto.          - Gathers website information; looks for vulnerabilities.
-- theHarvester.   - Gathers domain information.
-- Maltego.        - Intelligence platform; searches for DNS records and osint info about people.
-- Recon-ng.       - General recon framework.
-- OSRFramework.   - Open source recon framework.
-- Shodan.         - Hacker website for finding network information about servers.
-- Google hacking. - Google dorks; a hacker database.
+
+  - Nikto.          - Gathers website information; looks for vulnerabilities.
+  - theHarvester.   - Gathers domain information.
+  - Maltego.        - Intelligence platform; searches for DNS records and osint info about people.
+  - Recon-ng.       - General recon framework.
+  - OSRFramework.   - Open source recon framework.
+  - Shodan.         - Hacker website for finding network information about servers.
+  - Google hacking. - Google dorks; a hacker database.
+  - whois           - Whois lookup tool for domains.
+
+OSINT:
+
+  Open source intelligence is the collection of data gathered
+  from open sources, those overt services publicly available, to
+  be analysed and used to produce actionable intelligence.
+
+  This means access to this information through OSINT programs
+  is completely legal.
+
+Whois:
+
+  Whois is a query and response protocol for querying databases; stores
+  internet resources, registered users or assignees.
+
+  The resources include domain names, IP address blocks and autonomous
+  systems, but this may be extended.
+
+Shodan:
+
+  This allows vulnerabilities to be found on the internet; it's
+  a hacker's search engine.
+
+The harvester:
+
+  This is a tools for gathering subdomain names, email addresses
+  virutal hosts, open ports, banners and employee names from
+  public sources like search engines and gpg key servers.
+
+  Aside (banner):
+
+    A banner is textual information conveying the detail
+    relevant to the type and version of software running
+    on a network host.
