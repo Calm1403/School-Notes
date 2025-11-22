@@ -1,8 +1,6 @@
 
 You can use netplan to configure the networking for an interface.
-
 You can select whether or not it's configured either through a static IP or DHCP.
-
 It can be used to generate configurations for the underlying network manager 
 using netplan generate; translates YAML configs into the underlying format and
 places these in the configuration directories for the network daemon.
