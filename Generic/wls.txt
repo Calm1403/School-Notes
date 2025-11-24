@@ -1,0 +1,30 @@
+
+WSL:
+
+  The windows subsystem for linux is
+  a virtual machine running in the
+  windows hypervisor.
+
+  It's very similar to docker, using
+  resources on the fly as opposed to
+  preallocation.
+
+In a windows shell:
+
+  ~$ wsl --install
+
+  This will install the subsystem.
+
+  You'll then be asked to set a new
+  password:
+
+  ~$ New password:
+
+Overview:
+
+  This is really good for linux programming; you're
+  also able to loads of other things like running
+  a desktop environment, docker integration,
+  gpu acceleration, it's all supported.
+
+  https://learn.microsoft.com/en-us/windows/wsl/setup/environment

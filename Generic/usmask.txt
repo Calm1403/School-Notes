@@ -1,0 +1,24 @@
+
+Umask:
+
+  Umask is a value and a shell program; the value limits the file permissions for newly
+  created files in Unix-like file systems.
+
+  It's a bitwise mask; the default permissions of directories and files
+  are 0777 and 0666 respectively and the default value of the umask is 0022.
+
+  The mask is applied like so: <bit pattern> & ~(0022).
+
+  File: 110 110 110 (666)
+  Umsk: 000 010 010 (022)
+  Rslt: 110 100 100 (644)
+
+  Mask Clarification:
+
+    A mask is a form of data that can be used
+    to toggle the composite bits within
+    numerical data; alters multiple bits
+    within a byte, nibble, word and so on.
+
+    Multiple bits can be configured in a
+    single bitwise operation.

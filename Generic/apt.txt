@@ -1,0 +1,21 @@
+
+Installing repositories in apt:
+
+  Apt repositories would be contained within
+  a single file including third parties.
+
+  They would be typically contained within
+  the /etc/apt/source.list file.
+
+  Now they're typically contained within
+  their own repositories to
+  segregate them for easy management in the 
+  /etc/apt/source.list.d directory.
+
+  PPAs (Personal Package Archives) are a means
+  for developers to distribute their software
+  on ubuntu based distributions; you can
+  add PPAs to the sources.
+
+  They can be thought of as third party
+  repositories.

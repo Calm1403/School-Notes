@@ -50,13 +50,41 @@ DNS Zones:
 
   A DNS zone represents a portion of the
   DNS namespace that an organisation manages, which allows managers
-  to have a more granular control over the DNS components, such
-  as an authoritative name server.
+  to have a more granular control over the DNS components.
+
+  An authoritative name server controls a DNS zone for which
+  it is responsible for; they can either be a primary or a secondary
+  server.
 
   A DNS zone is implemented in the configuration system of a DNS
   server; a text file that starts with the special DNS record SOA,
-  meaning start of authority and contains all records for the
+  meaning start of authority, and contains all records for the
   resources described within the zone.
+
+  We think of a DNS zone as a delegated partition of the Domain
+  namespace, a container of the DNS settings and DNS
+  records inside a DNS zone file.
+
+  The DNS namepsace can have multiple zones; structured at the
+  top with the root level, top level domain level, domain
+  and subdomain. This is good for administrative
+  purposes, allowing us to manage the different levels
+  of the namespace.
+
+  There are two types of DNS zone; primary and secondary.
+
+  The primary zone is used for control, the secondary
+  is used for redundancy reduction; the secondary
+  gets all the records from the primary DNS zone
+  in a DNS zone transfer, this is typically
+  done when the cache TTL expires or 
+  the primary server pushes it.
+
+  A DNS zones shouldn't be directly associated to
+  a specific domain; a domain name zone
+  may contain single or multiple host names
+  for the same domain, dns zones can be
+  on the same server too.
 
 DNS Records:
 
@@ -70,7 +98,7 @@ DNS Records:
 
   Record types:
 
-    A - Holds the adress of a domain (IPv4).
+    A - Holds the address of a domain (IPv4).
     AAAA - Holds IPv6 address for a domain.
     CNAME record - Forwards a domain or subdomain to another domain.
     MX record - Directs mail to an email server.
