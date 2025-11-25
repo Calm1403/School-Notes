@@ -97,6 +97,10 @@ comfortable with that.
 If you want to deviate from the format if you're not using a .txt format, please
 ensure that your notes are written coherently for others to easily understand.
 
+Note that I would prefer if you do write in the .txt format, just to
+simplify things by having one common data type to facilitate
+data manipulation and to reduce the size of the repository.
+
 Topic Format:
 
 Topics in the documents are structured, they start off with the name of topic
@@ -104,7 +108,7 @@ followed by a colon, then indented text discussing the topic to which the
 indented text relates, and this structure applies to sub topics or asides
 within those topics.
 
-Even this read file adheres to the structure.
+This read file is an example.
 
 Text Width:
 
