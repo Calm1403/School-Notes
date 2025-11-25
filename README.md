@@ -25,12 +25,16 @@ as they follow the format below at least somewhat; I feel like keeping
 text uniform is practical, because structure is easy to read and 
 incoherent text is difficult to read, simply.
 
+If you're going to make commits, it may be helpful to place
+references in the commit message from where the information is derived
+along with a brief description as to the change.
+
 Furthermore, if you find that a document contains information that is
 either misleading or wrong, please feel free to call me, and
 only me; so no one else, an idiot, correct me or the person who 
 wrote the document and make your changes with an explanation of
 why the information previously was malformed and why your
-interpretation is valid with reasoning and citation.
+interpretation is valid with reasoning and reference to source.
 
 ## Repository Format:
 
@@ -86,7 +90,8 @@ There are two principals that I (try) to adhere to:
 2. K.I.S.S - Keep It Simple Sweetie/Stupid. ( Somewhat Optional >:) ).
 
 Notes can be technical as long as the information is structured
-and clarified in a way that helps the person reading it.
+and clarified in a way that helps the person reading it; they
+should be brief and well contained.
 
 Note that the format of documents only applies to notes written in the .txt 
 format, so If you've decided to include notes in a format that you like written
