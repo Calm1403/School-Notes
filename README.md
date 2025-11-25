@@ -40,7 +40,7 @@ is a directory typically representing a module containing those
 text files.
 
 A topic is just a piece of particular information relevant
-to the parent subject contained within a document.
+to the parent subject, contained within a document.
 
 The reason why documents may be seperate is because
 the topics in such case are widely different; this is just my 
