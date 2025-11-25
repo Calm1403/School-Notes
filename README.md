@@ -4,7 +4,7 @@ These are school notes; information pertinent to the modules for HNC computing s
 
 Please note that this repo is changing constantly, that I'm open minded about the
 state of the repository and that I'm personally, currently in the process of migrating
-my written notes over to this repository.
+my written notes over to this repository, not everything will be here.
 
 ## Table Of Contents:
 
