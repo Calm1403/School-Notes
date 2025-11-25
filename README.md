@@ -126,5 +126,5 @@ the command to  which the command relates, like so:
   
 And then I write text bellow it to explain it in more detail, typically;
 the command above is how to destroy a linux box with a managed root 
-directory, so don't TRY execute it :)
+directory, so don't try execute it :)
   
