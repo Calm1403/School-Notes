@@ -19,7 +19,7 @@ Justification:
 
 Distinction to IP addresses:
 
-  IP address enable messages to got
+  IP address enable messages to get
   to and from specific devices, where
   port numbers allow the targeting
   of particular services within those
@@ -33,14 +33,9 @@ OSI Layer:
   Both networking protocols specify what ports
   that packets will go through.
 
-Common Ports:
-
-  22 - SSH
-  23 - Telnet
-  443 - TCP / HTTPS
-  8443 - Also HTTPS
-  3389 - Remote desktop protocol
-  80 - HTTP
-  67 - DHCP server
-  53 - Local Resolver (DNS)
-  631 - Cups printer interface.
+Ports and distinctions amongst them:
+  
+  Ports for services are made distinct through numbers;
+  for example, port 22 typically refers to a secure remote
+  shell session through the SSH protocol and port 23 refers
+  to an older ARPANET sell session through the Telnet protocol.
