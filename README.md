@@ -4,6 +4,8 @@ These are school notes; information pertinent to the modules for HNC computing s
 
 Table Of Contents:
 
+    Description - A description of what this is.
+    Table Of Contents - A list of information.
     Commits - Information about commit style.
     Repository Format - Information about the style of the repo.
     Repository Heirarchy - Visualisation of the style.
