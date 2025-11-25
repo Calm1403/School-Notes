@@ -141,7 +141,7 @@ CPU Cache:
 
 Address bus:
 
-  The address bus is used to specify an actual
+  The address bus is used to specify a memory
   address; when the processor or a DMA
   device reads or writes to an address, that address
   is specified on the address bus.
@@ -167,7 +167,8 @@ Control bus:
 
 Volatile Memory:
 
-  Volatile memory means that data in this memory gets destroyed on shutdown.
+  Volatile memory means that data in this memory gets destroyed on shutdown; it
+  is subject to change.
 
 Mutability:
 
@@ -194,7 +195,7 @@ Dynamic Ram:
 
   The defining characteristic of DRAM is that it requires to be refreshed.
 
-  This is because each bit of memory is sotred as an electrical charge within
+  This is because each bit of memory is stored as an electrical charge within
   a small capacitor on the chip; with the passage of time, the charge
   in the memory cell dissipates away.
 
@@ -209,14 +210,22 @@ Dynamic Ram:
   compared to the single transistor and capacitor for DRAM; this also means 
   that it's larger and more expensive per bit.
 
+  Dynamic ram is an example of volatile memory, where on power asphyxiation
+  the memory is flushed.
+
 EPROM:
 
   An EPROM is an erasable, programmable, read only memory type; is a type of
   programmable, erasable read only memory.
 
+  This memory can be wiped on exposure to ultraviolet light.
+
 ROM:
 
-  This means read only memory; this is an example of immutable memory.
+  Read only memory; this is an example of immutable memory.
+
+  This type of memory is typically small, fairly small in
+  terms of storage.
 
 Software:
 
