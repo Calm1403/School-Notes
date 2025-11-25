@@ -89,29 +89,29 @@ Document Format:
 
   Topic Format:
 
-    Topics in the documents are structured, they start off with the name of topic
-    followed by a colon, then indented text discussing the topic to which the
-    indented text relates, and this structure applies to sub topics or asides
-    within those topics.
+  Topics in the documents are structured, they start off with the name of topic
+  followed by a colon, then indented text discussing the topic to which the
+  indented text relates, and this structure applies to sub topics or asides
+  within those topics.
 
-    Even this read file adheres to the structure.
+  Even this read file adheres to the structure.
 
   Text Width:
 
-    I try to keep the paragraph width relatively small, so it's convieniant to read while split
-    screening, but note that I don't manage the actual width of the text; it's purely eye
-    balled, although I may begin to enforce it if it's really an issue.
+  I try to keep the paragraph width relatively small, so it's convieniant to read while split
+  screening, but note that I don't manage the actual width of the text; it's purely eye
+  balled, although I may begin to enforce it if it's really an issue.
 
   Command Format:
 
-    When writing commands, I always introduce the command at a high level
-    with a brief description then indent the command below that text describing
-    the command to  which the command relates, like so:
+  When writing commands, I always introduce the command at a high level
+  with a brief description then indent the command below that text describing
+  the command to  which the command relates, like so:
 
-      ~$ echo -e "\x1b[1;31mI'm gonna die! :("; sudo rm -rf /* --no-preseve-root \ 
-          # Init, you should SIGINT (9) yourself now!
-    
-    And then I write text bellow it to explain it in more detail, typically;
-    the command above it how to destroy a linux box with a managed root 
-    directory, so don't execute it :)
+    ~$ echo -e "\x1b[1;31mI'm gonna die! :("; sudo rm -rf /* --no-preseve-root \ 
+        # Init, you should SIGINT (9) yourself now!
+  
+  And then I write text bellow it to explain it in more detail, typically;
+  the command above iS how to destroy a linux box with a managed root 
+  directory, so don't TRY execute it :)
   
