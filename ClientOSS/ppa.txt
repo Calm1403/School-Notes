@@ -3,7 +3,7 @@ PPA - Personal Package Archive
 This is a software repository for uploading source packages to be
 built and published.
 
-They're used as an APT repository entry by canonicals launchpad service.
+They're used as an APT repository entry by canonical's launchpad service.
 
 Anyone could make a PPA which means they're not very secure; they could
 be easily used to ditribute melicious code.
