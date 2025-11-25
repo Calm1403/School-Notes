@@ -37,7 +37,7 @@ Repository Format:
 Think of it like this: a document within a subject is a list of 
 topics; a document is a text file containing topics and a subject
 is a directory containing text files, typically representing
-the module.
+a module.
 
 A topic is just a piece of particular information relevant
 to the parent subject contained within a document.
