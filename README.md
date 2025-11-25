@@ -142,6 +142,6 @@ the command to  which the command relates, like so:
         # Init, you should SIGINT (9) yourself now!
   
 And then I write text bellow it to explain it in more detail, typically;
-the command above is how to destroy a linux box with a managed root 
+the command above is a quite way to destroy a linux box with a managed root 
 directory, removing everything stored within, so don't try execute it :)
   
