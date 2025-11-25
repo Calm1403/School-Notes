@@ -31,7 +31,7 @@ incoherent text is difficult to read, simply.
 
 If you're going to make commits, it may be helpful to place
 references in the commit message from where the information is derived
-along with a brief description of the change.
+along with a brief description of the addition.
 
 Furthermore, if you find that a document contains information that is
 either misleading or wrong, please feel free to call me, and
