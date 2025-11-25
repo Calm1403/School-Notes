@@ -55,11 +55,11 @@ the topics in such case are widely different; this is just my
 way of organisation and it makes sense to me.
 
 As a concrete example, documents on the nmap program are part of
-the ethical hacking subject, where topics pertaining to nmap
-may include things like the distinction between scan types
+the ethical hacking subject in the hacking directory, where topics 
+pertaining to nmap may include things like the distinction between scan types
 and their practicalities over each other, and scripts that
 nmap can perform like cache spoofing DNS servers or
-vulnerability determination.
+vulnerability determination of hosts.
 
 ## Respository Heirarchy:
 
