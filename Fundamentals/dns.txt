@@ -1,0 +1,114 @@
+
+DNS:
+
+  DNS stands for domain name system; servers that are part of the domain name system
+  are tasked with the resolution of domains to addresses.
+
+  They take a URI, and return the address of the service server associated to that URI.
+
+  A local resolver will communicate with the root domain name server to get the servers
+  associated to a particular top level domain and thus the IP of the server of the
+  service under that domain.
+
+DNS Stages:
+
+  DNS recursor/resolver:
+
+    This is a server designed to receive queries from client machines
+    through applications, such as a web browser; its typically
+    responsible for making additional requests in order to satisfy
+    the DNS query.
+
+    The resolver may be on the client computer itself; a service
+    called systemd-resolved is available on Linux for this
+    exact purpose.
+
+    It'll typically make a query to a root DNS server.
+
+  Root name server:
+
+    The root name server is the second step taken to translating
+    domains into IP addresses; it's a collection of server addresses
+    for top level domain name servers.
+
+  TLD name server:
+
+    This holds the servers associated to the last portion of a domain
+    name; '.com' is a valid example of TLD.
+
+    This is a collection of server addresses, under
+    the particular TLD header, for authoritative name
+    servers for services hosted under that TLD.
+
+  Authoritative name server:
+
+    This is the last stop in the query; if the name server
+    has access to the requested record, it'll return the
+    address for the requested domain name back to the DNS resolver.
+
+DNS Zones:
+
+  A DNS zone represents a portion of the
+  DNS namespace that an organisation manages, which allows managers
+  to have a more granular control over the DNS components.
+
+  An authoritative name server controls a DNS zone for which
+  it is responsible for; they can either be a primary or a secondary
+  server.
+
+  A DNS zone is implemented in the configuration system of a DNS
+  server; a text file that starts with the special DNS record SOA,
+  meaning start of authority, and contains all records for the
+  resources described within the zone.
+
+  We think of a DNS zone as a delegated partition of the Domain
+  namespace, a container of the DNS settings and DNS
+  records inside a DNS zone file.
+
+  The DNS namepsace can have multiple zones; structured at the
+  top with the root level, top level domain level, domain
+  and subdomain. This is good for administrative
+  purposes, allowing us to manage the different levels
+  of the namespace.
+
+  There are two types of DNS zone; primary and secondary.
+
+  The primary zone is used for control, the secondary
+  is used for redundancy reduction; the secondary
+  gets all the records from the primary DNS zone
+  in a DNS zone transfer, this is typically
+  done when the cache TTL expires or 
+  the primary server pushes it.
+
+  A DNS zones shouldn't be directly associated to
+  a specific domain; a domain name zone
+  may contain single or multiple host names
+  for the same domain, dns zones can be
+  on the same server too.
+
+DNS Records:
+
+  A DNS record is an instruction that lives within an authoritative 
+  DNS server, providing information about a domain and what IP 
+  address is associated with that domain and how to handle requests 
+  for it.
+
+  These records have a time to live, which implies the number of time 
+  taken before a server refreshes this information.
+
+  Record types:
+
+    A - Holds the address of a domain (IPv4).
+    AAAA - Holds IPv6 address for a domain.
+    CNAME record - Forwards a domain or subdomain to another domain.
+    MX record - Directs mail to an email server.
+    TXT record - Lets an admin store text notes in the record.
+    NS record - Stores the name server for a DNS entry.
+
+  Under the root zone, the domain namespace is organised in a layout
+  of subdomains below the root domain '.'. The period is typically
+  implicit with most URIs.
+
+  The domain name system is segregated into this way so subdomains of 
+  a domain can be managed individually, and independently.
+
