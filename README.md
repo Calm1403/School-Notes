@@ -1,8 +1,8 @@
-Description:
+## Description:
 
 These are school notes; information pertinent to the modules for HNC computing science.
 
-Table Of Contents:
+## Table Of Contents:
 
     Description - A description of what this is.
     Table Of Contents - A list of information.
@@ -14,7 +14,7 @@ Table Of Contents:
     Command Format - Format of commands within notes.
     
 
-Commits:
+## Commits:
 
 This is supposed to be casual, it doesn't have to be serious, but it shouldn't
 be egregiously silly either; commits and notes can be funny, as long as you note
@@ -32,7 +32,7 @@ wrote the document and make your changes with an explanation of
 why the information previously was malformed and why your
 interpretation is valid with reasoning and citation.
 
-Repository Format:
+## Repository Format:
 
 Think of it like this: a document within a subject is a list of 
 topics; a document is a text file containing topics and a subject
@@ -46,7 +46,7 @@ The reason why documents may be seperate is because
 the topics in such case are widely different; this is just my 
 way of organisation and it makes sense to me.
 
-Respository Heirarchy:
+## Respository Heirarchy:
 
     SUBJECT 1:
       DOCUMENT 1.TXT:
@@ -75,7 +75,7 @@ Respository Heirarchy:
       ... Stuff in subject 2 like subject 1.
     ... Further Subjects.
 
-Document Format:
+## Document Format:
 
 I've a structured approach to writing notes in text documents; it's sort of like a
 man page, but simpler.
@@ -101,7 +101,7 @@ Note that I would prefer if you do write in the .txt format, just to
 simplify things by having one common data type to facilitate
 data manipulation and to reduce the size of the repository.
 
-Topic Format:
+## Topic Format:
 
 Topics in the documents are structured, they start off with the name of topic
 followed by a colon, then indented text discussing the topic to which the
@@ -111,13 +111,13 @@ within those topics.
 This read file is a poor example, because it's in markdown as opposed
 to raw text, but it does adhere to this structure.
 
-Text Width:
+## Text Width:
 
 I try to keep the paragraph width relatively small, so it's convieniant to read while split
 screening, but note that I don't manage the actual width of the text; it's purely eye
 balled, although I may begin to enforce it if it's really an issue.
 
-Command Format:
+## Command Format:
 
 When exemplifying commands, I always introduce the command at a high level
 with a brief description then indent the command below that text describing
