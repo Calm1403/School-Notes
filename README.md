@@ -85,8 +85,8 @@ There are two principals that I (try) to adhere to:
 1. R.T.F.Q - Read the F!cking Template! ( Please :) )
 2. K.I.S.S - Keep It Simple Sweetie/Stupid ( Somewhat Optional >:) ).
 
-Notes can be technical as long as the information is organised and structured in
-a way that helps the person reading it.
+Notes can be technical as long as the information is structured
+and clarified in a way that helps the person reading it.
 
 Note that the format of documents only applies to notes written in the .txt 
 format, so If you've decided to include notes in a format that you like written
