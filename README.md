@@ -100,7 +100,7 @@ not be trivial.
 Note that the format of documents only applies to notes written in the .txt 
 format, so If you've decided to include notes in a format that you like written
 using other programs, like word for instance, you could ignore this, but it's 
-always nice to have some coherency, so you could attempt to mimick it if you're
+always nice to have some coherency, so you could attempt to mimic it if you're
 comfortable with that.
 
 If you want to deviate from the format if you're not using a .txt format, please
