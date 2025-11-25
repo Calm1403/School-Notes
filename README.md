@@ -72,8 +72,8 @@ man page, but simpler.
 
 There are two principals that I (try) to adhere to:
 
-    1. R.T.F.Q - Read the F!cking Template! ( Please :) )
-    2. K.I.S.S - Keep It Simple Sweetie/Stupid ( Optional >:) ).
+1. R.T.F.Q - Read the F!cking Template! ( Please :) )
+2. K.I.S.S - Keep It Simple Sweetie/Stupid ( Optional >:) ).
 
 Notes can be technical as long as the information is organised and structured in
 a way that helps the person reading it.
