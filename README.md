@@ -143,5 +143,6 @@ the command to  which the command relates, like so:
   
 And then I write text bellow it to explain it in more detail, typically;
 the command above is a quick way to destroy a linux box with a managed root 
-directory, removing everything stored within, so don't try execute it :)
+directory, removing everything stored within, so please don't try execute it
+on an actual machine :)
   
