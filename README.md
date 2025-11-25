@@ -111,8 +111,6 @@ within those topics.
 This read file is a poor example, because it's in markdown as opposed
 to raw text, but it does adhere to this structure.
 
-## Text Width:
-
 I try to keep the paragraph width relatively small, so it's convieniant to read while split
 screening, but note that I don't manage the actual width of the text; it's purely eye
 balled, although I may begin to enforce it if it's really an issue.
