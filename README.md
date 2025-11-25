@@ -2,6 +2,9 @@
 
 These are school notes; information pertinent to the modules for HNC computing science.
 
+Please note that this is changing constantly, and that I'm open minded about the
+state of the repository.
+
 ## Table Of Contents:
 
     Description - A description of what this is.
