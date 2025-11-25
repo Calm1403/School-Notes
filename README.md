@@ -2,8 +2,9 @@
 
 These are school notes; information pertinent to the modules for HNC computing science.
 
-Please note that this is changing constantly, and that I'm open minded about the
-state of the repository.
+Please note that this is changing constantly, that I'm open minded about the
+state of the repository and that I'm personally, currently in the process of migrating
+my written notes over to this repository.
 
 ## Table Of Contents:
 
