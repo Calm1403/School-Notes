@@ -10,6 +10,8 @@ Core Dumped:
 
 Fetch Execute Cycle:
 
+  First note the following components involved:
+
   Units and Registers:
 
     MAR (Memory Address Register):
@@ -60,15 +62,17 @@ Fetch Execute Cycle:
     within the MDR, being passed through to it on the data bus, then
     to the IR through the same means if the data is an opcode; it's not immediately 
     copied to the instruction register because it may be another kind of data.
+    The load command is an example of such an instance of varying data.
 
     It should be noted that the value within the instruction register is segmented
     being composed of one IR(OP) opcode segment, and at most two IR(ADDR)
-    segments, and that the data bus is bidirectional for both reading and writing.
-    The most significant bits tend to compose the opcode.
+    address segments.
+    
+    The most significant bits tend to compose the opcode, the least being
+    the addresses.
 
-    Then, the IR(OP) segment of the instruction is then decoded by the CC.
-
-    The PC is then incremented by one.
+    The IR(OP) segment of the instruction is then ultimately decoded by the CC, with the
+    PC then being incremented by one.
 
     Overview:
 
@@ -225,73 +229,74 @@ ROM:
   Read only memory; this is an example of immutable memory.
 
   This type of memory is typically small, fairly small in
-  terms of storage.
+  terms of storage, and is immutable, being unable to
+  have modifications applied to it through writes operations.
 
 Software:
 
-    NOS:
+  NOS:
 
-      A network OS (NOS) is a specialised operating system for a network device, which
-      could include things like the Intel Management System, routers and switches.
+    A network OS (NOS) is a specialised operating system for a network device, which
+    could include things like the Intel Management System, routers and switches.
 
-      Historically, operating systems with network capabilities were described
-      by this term, allowing personal computers to access the internet and participate
-      in a client server architecture where a server enabled multiple clients to
-      share resources, perhaps printing services.
+    Historically, operating systems with network capabilities were described
+    by this term, allowing personal computers to access the internet and participate
+    in a client server architecture where a server enabled multiple clients to
+    share resources, perhaps printing services.
 
-    MUOS:
+  MUOS:
 
-      A mutli-user operating system allows many users to take advantage of a computer's
-      hardware; the operating system must ensure that the requirements of each user are
-      balanced.
+    A mutli-user operating system allows many users to take advantage of a computer's
+    hardware; the operating system must ensure that the requirements of each user are
+    balanced.
 
-      It also ensures that the programs being used by them use sufficient
-      and separate resources; done so that at problem with one
-      user doesn't effect the entire group of users.
+    It also ensures that the programs being used by them use sufficient
+    and separate resources; done so that at problem with one
+    user doesn't effect the entire group of users.
 
-      An example of the multi-user design philosophy would be Unix. Allowing remote access
-      to the unix shell for various users at the same time.
+    An example of the multi-user design philosophy would be Unix. Allowing remote access
+    to the unix shell for various users at the same time.
 
-    RTOS:
+  RTOS:
 
-      A real time operating system is an operating system that
-      guarantees the execution of a task within a fixed time
-      constraint; they often ensure the implementation of
-      multi tasking, interrupt level sufficiency and multithreading.
+    A real time operating system is an operating system that
+    guarantees the execution of a task within a fixed time
+    constraint; they often ensure the implementation of
+    multi tasking, interrupt level sufficiency and multithreading.
 
-    Distributed System:
+  Distributed System:
 
-      A distributed system is a software system in which components
-      located on networked computers communicate and coordinate
-      their actions by passing messages.
+    A distributed system is a software system in which components
+    located on networked computers communicate and coordinate
+    their actions by passing messages.
 
-      The components interact with each other in order to achieve a common goal
-      across computers; global clock, independent failure of components and a
-      lack of a global clock.
+    The components interact with each other in order to achieve a common goal
+    across computers; global clock, independent failure of components and a
+    lack of a global clock.
 
-    Threading:
+  Threading:
 
-      Multithreading is the state of a program's execution where multiple
-      execution contexts are involved.
+    Multithreading is the state of a program's execution where multiple
+    execution contexts are involved.
 
-      A thread is an independent instance of a program's execution, having a
-      set of distinct values for the processor registers; since this includes
-      the instruction register, it controls what it executes. What I mean by
-      this is that a thread will naturally have its own execution context.
+    A thread is an independent instance of a program's execution, having a
+    set of distinct values for the processor registers; since this includes
+    the instruction register, it controls what it executes. What I mean by
+    this is that a thread will naturally have its own execution context.
 
-      It will have a program counter, stack pointer, memory bound, register
-      state, the whole lot with respect to it.
+    It will have a program counter, stack pointer, memory bound, register
+    state, the whole lot with respect to it.
 
-      They're the software unit affected by the control flow of the program;
-      affected by things operating on the instruction pointer like function
-      calls, goto and loops; this is where the term 'thread' comes from,
-      because these control flow operations weave the flow execution through
-      the program code.
+    They're the software unit affected by the control flow of the program;
+    affected by things operating on the instruction pointer like function
+    calls, goto and loops; this is where the term 'thread' comes from,
+    because these control flow operations weave the flow execution through
+    the program code.
 
-      Without multithreading, a single thread executes the program
-      in sequence.
+    Without multithreading, a single thread executes the program
+    in sequence.
 
-      A thread can be thought of as no more than than a set of register values.
+    A thread can be thought of as no more than than a set of register values.
 
   Operating system (MUOS):
 
@@ -308,36 +313,36 @@ Software:
 
          Aside (virtual memory):
 
-           Virtual memory is an abstraction of
-           contiguous memory; memory is allocated
-           arbitrarily by the operating system's
-           memory allocator.
+          Virtual memory is an abstraction of
+          contiguous memory; memory is allocated
+          arbitrarily by the operating system's
+          memory allocator.
 
-           We often call the virtual memory
-           of a program its virtual address space,
-           or just simply address space; memory
-           that it has access to.
+          We often call the virtual memory
+          of a program its virtual address space,
+          or just simply address space; memory
+          that it has access to.
 
-         Aside (memory allocator):
+          Aside (memory allocator):
 
-           A memory allocator is typically implemented through
-           means of a free list in a fixed-size blocks allocator
-           implementation; the free list keeps note
-           of what elements are free for use in memory and
-           their size. This is typically prone to
-           fragmentation, and since the system is inherently
-           arbitrary, it only emphasises the R in RAM.
- 
-           Other implementations may include buddy blocks,
-           where in this system allocations of memory
-           may be made in several pools as opposed to one.
+            A memory allocator is typically implemented through
+            means of a free list in a fixed-size blocks allocator
+            implementation; the free list keeps note
+            of what elements are free for use in memory and
+            their size. This is typically prone to
+            fragmentation, and since the system is inherently
+            arbitrary, it only emphasises the R in RAM.
+  
+            Other implementations may include buddy blocks,
+            where in this system allocations of memory
+            may be made in several pools as opposed to one.
 
-           Each of the blocks or pools may be a power of two in size;
-           each allocation is connected by a linked list
-           in the pools for later use, where if a smaller size
-           than available is requested, the smallest available size
-           is selected and split, the process repeating until
-           the request is complete.
+            Each of the blocks or pools may be a power of two in size;
+            each allocation is connected by a linked list
+            in the pools for later use, where if a smaller size
+            than available is requested, the smallest available size
+            is selected and split, the process repeating until
+            the request is complete.
 
       2. Provide an interface for a means of accessing
          the computer's hardware resources; physical memory
