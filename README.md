@@ -118,7 +118,7 @@ balled, although I may begin to enforce it if it's really an issue.
 ## Command Format:
 
 When exemplifying commands, I always introduce the command at a high level
-with a brief description then indent the command below that text describing
+with a brief description, then indent the command below that text describing
 the command to  which the command relates, like so:
 
     ~$ echo -e "\x1b[1;31mI'm gonna die! :("; sudo rm -rf /* --no-preseve-root \ 
