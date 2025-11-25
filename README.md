@@ -94,7 +94,8 @@ There are two principals that I (try) to adhere to:
 
 Notes can be technical as long as the information is structured
 and clarified in a way that helps the person reading it; they
-should be brief and well contained.
+should be brief and well contained, but informative enough to
+not be trivial.
 
 Note that the format of documents only applies to notes written in the .txt 
 format, so If you've decided to include notes in a format that you like written
