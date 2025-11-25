@@ -1,9 +1,9 @@
 OSRFramework CLI. Collection of tools included in the framework.
 
 SUBCOMMANDS:
-  List of available commands that can be invoked using OSRFramework CLI.
 
-  <sub_command> <sub_command_options>
+  This is a list of available commands that can be invoked using OSRFramework CLI.
+
     alias_generator     Generates a list of candidate usernames based on known
                         information.
     
@@ -21,7 +21,6 @@ SUBCOMMANDS:
     usufy               Looks for registered accounts with given nicknames.
 
 ABOUT ARGUMENTS:
-  Showing additional information about this program.
 
   -h, --help            shows this help and exists.
   --license             shows the AGPLv3+ license and exists.
