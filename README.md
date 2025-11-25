@@ -1,1 +1,1 @@
-These are linux related notes.
+These are school notes.
