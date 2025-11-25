@@ -36,8 +36,8 @@ interpretation is valid with reasoning and citation.
 
 Think of it like this: a document within a subject is a list of 
 topics; a document is a text file containing topics and a subject
-is a directory containing text files, typically representing
-a module.
+is a directory typically representing a module containing those 
+text files.
 
 A topic is just a piece of particular information relevant
 to the parent subject contained within a document.
