@@ -108,7 +108,8 @@ followed by a colon, then indented text discussing the topic to which the
 indented text relates, and this structure applies to sub topics or asides
 within those topics.
 
-This read file is an example.
+This read file is a poor example, because it's in markdown as opposed
+to raw text, but it does adhere to this structure.
 
 Text Width:
 
