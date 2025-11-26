@@ -1,0 +1,46 @@
+
+Protocol - Definition:
+
+  According to geeks for geeks, a networking protocol can be thought
+  of as a set of rules that collectively govern the means of communication
+  between different hosts on the network.
+
+  For example, the telecommunications protocol (TCP) is a reliable transport
+  layer protocol that, in practice, ensures data is always received in the
+  converse between two hosts, using a 'three way handshake,' a three step
+  process, to ensure a stable connection.
+
+  Protocols may run at any layer that their purposed for, they're more
+  like implementation guidance for open system processes, take a secure
+  shell session implementation like openSSH for example, which runs at
+  the session layer of the OSI model.
+
+Protocols:
+
+  RIP:
+
+    The routing information protocol (RIP) prevents a routing loop, which
+    is a common problem within networking; they're formed when
+    an error occurs with the routing algorithm, where in a group of
+    nodes, resultantly the formation of a loop occurs.
+
+    [A]-->[B]
+     |     |
+     |     X  <-- Disconnection; broken network.
+     |     v
+     +--->[C]
+
+     ^
+     |
+     +----------- Cross section; can't draw diagonally.
+
+
+    A node A thinks that the path to a destination C is through
+    another node B; B thinks that the path to C starts through A.
+
+    A and B are then in a two node loop; so they constantly go through
+    each other in attempt to get to the inaccessible C node.
+
+    RIP attempts to prevent this situation from occurring by
+    implementing a limit on the number of on the number of
+    hops, an instance of an address being routed.
