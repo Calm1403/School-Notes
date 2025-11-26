@@ -1,0 +1,9 @@
+
+Ensuring that a firewall isn't active:
+
+  You can use hping3 -c 1 -B -p 80 -s 5555 -A <address> to determine
+  if a firewall is active; there shouldn't be any firewall rules running.
+  
+  Address is the address of the machine to
+
+
