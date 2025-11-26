@@ -4,7 +4,7 @@ These are school notes; information pertinent to the modules for HNC computing s
 
 Please note that this repo is changing constantly, that I'm open minded about the
 state of the repository and that I'm personally, currently in the process of migrating
-my written notes over to this repository.
+my written notes over to this repository, so not everything will be here.
 
 ## Table Of Contents:
 
@@ -55,11 +55,11 @@ the topics in such case are widely different; this is just my
 way of organisation and it makes sense to me.
 
 As a concrete example, documents on the nmap program are part of
-the ethical hacking subject, where topics pertaining to nmap
-may include things like the distinction between scan types
+the ethical hacking subject in the hacking directory, where topics 
+pertaining to nmap may include things like the distinction between scan types
 and their practicalities over each other, and scripts that
 nmap can perform like cache spoofing DNS servers or
-vulnerability determination.
+vulnerability determination of hosts.
 
 ## Respository Heirarchy:
 
@@ -142,6 +142,7 @@ the command to  which the command relates, like so:
         # Init, you should SIGINT (9) yourself now!
   
 And then I write text bellow it to explain it in more detail, typically;
-the command above is how to destroy a linux box with a managed root 
-directory, removing everything stored within, so don't try execute it :)
+the command above is a quick way to destroy a linux box with a managed root 
+directory, removing everything stored within, so please don't try execute it
+on an actual machine :)
   

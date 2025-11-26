@@ -93,7 +93,7 @@ DNS Records:
   address is associated with that domain and how to handle requests 
   for it.
 
-  These records have a time to live, which implies the number of time 
+  These records have a time to live, which implies the amount of time 
   taken before a server refreshes this information.
 
   Record types:
