@@ -23,7 +23,7 @@ In a windows shell:
 Overview:
 
   This is really good for linux programming; you're
-  also able to loads of other things like running
+  also able to do loads of other things like running
   a desktop environment, docker integration,
   gpu acceleration, it's all supported.
 
