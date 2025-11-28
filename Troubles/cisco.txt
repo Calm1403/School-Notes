@@ -1,0 +1,169 @@
+
+This document will contain information about networking gathered from Cisco's networking courses.
+
+Media:
+
+  Data is transmitted across a network; there are three channels over which the message of a devices travels from source to destination.
+
+  Media Channels:
+
+    1. Metal wires; data is encoded by electrical pulses.
+    2. Glass or plastic; data is encoded into pulses of light.
+    3. Wireless; data is encoded via modulation of electromagnetic wave frequencies.
+
+Ethernet:
+
+  Ethernet is for NIC to NIC communication on the same network.
+
+  This is related to the data link layer of the OSI model.
+
+  Ethernet Frame:
+
+    Frame segments: [Preamble] [Start Frame Delimiter] [Destination MAC Address] [Source MAC Address] [Length Type] [Data] [Frame Check Sequence]
+    Bytes:              7                 1                         6                      6                2        many            4
+
+  Segment purposes:
+
+    Preamble:
+    
+      The preamble is for synchronisation; it gets the receiving NIC in sync with the incoming bit stream.
+
+    The Start Frame Delimiter:
+
+      This tells the receiving network interface card that the information following this is associated to the ethernet frame.
+
+    The Destination MAC Address:
+
+      This is the MAC address for the network interface card that's the destination of the frame.
+
+    The Source MAC Address:
+
+      This is the address of the network interface card from which the frame originates.
+
+    Length Type:
+
+      This might be the length of the data; how many bytes are in the data partition.
+
+      This also might be the type field; is this Ipv4 or Ipv6?
+
+    Data:
+    
+      This contains the data; it might be a network packet containing http or some other payload data.
+
+      It's whatever the frame encapsulates.
+
+      The ethernet could 'gees ah shite ah bout' the data contained within this segment; it's just delivering it.
+
+    Frame Check Sequence:
+
+      This is for performing error checking to ensure that there's been no loss of information during transmission.
+
+  Distinction:
+
+    A MAC address will uniquely identify a network interface; an Ipv4 address identifies a host who's part of a network.
+
+  Ethernet Switches:
+
+    These operate at the layer two segment of the OSI model; this is because they operate with layer two information for forwarding rules.
+
+    MAC Tables:
+      
+      Switches have MAC address tables; to forward the frame, a switch looks at a MAC address, and queries the MAC address
+      to determine which port it's associated to.
+
+      When the switch receives a frame, it determines whether or not the MAC addresses within are known to it; it'll check the source
+      address of the frame and determine whether or not that address is already known to it in the table, and if it doesn't, it'll add
+      it to the MAC address table, having it then correspond to the respective ethernet port.
+
+      Then, once the source address is resolved, it'll check if the destination address exists within the table; if it doesn't, this is
+      known as an unknown unicast, because the switch doesn't know which port to send it.
+
+      In this condition, it'll act like an older ethernet hub and send the frame to every port on the network; the devices will receive the
+      frame, and if the MAC address of the device doesn't match the destination address of the frame, it gets ignored, otherwise it gets
+      received and the table is populated with the MAC address of the successfully receiving device and the ethernet port associated.
+
+      This is typically done by means of the receiving device sending back a frame confirming that it received the frame, allowing
+      the switch to learn about the address of the device that successfully received the frame.
+
+      They tend to keep the information within the table for about five minutes, before flushing the table to keep it
+      up to date.
+
+  IPv4:
+
+    A host of a network needs an IPv4 address to participate on the local access network and the internet; it identifies a particular host.
+
+    An address must be unique within the LAN for local communication, as well as on the internet for remote usage.
+
+    An IPv4 address is assigned to the network interface card; hosts may have more than one NIC, each with their own IP address for
+    participating within networks.
+
+    Routers that provide connections to an IP network also have IPv4 addresses, typically with a host segment of one or the last
+    representable host, being x.x.x.1 or x.x.x.254.
+
+    Packet:
+    
+      These are the datagrams often encapsulated within frames; each has a destination and source IPv4 address, required by networking
+      devices to ensure the information is provided to the destination, and replies from the destination to the source.
+
+
+    Classes:
+
+      There are different classes of IPv4 addresses; each are divided into two segments representing the host and network
+
+      The distinction between classes is the number of bytes allocated to each octet for representing the host and network;
+      note that an octet is a sequence of eight bits.
+
+      1. Class C addresses have three bytes allocated to the network, with one byte allocated to the host.
+      2. Class B addresses have two bytes allocated to the network, with two bytes allocated to the host.
+      3. Class A addresses have one byte allocated to the network, with three bytes allocated to the host.
+
+      Classless inter domain representation (CIDR):
+
+        This is a notation for representing the number of bits allocated
+        to the network; it's a short hand for a bitwise mask of bytes
+        used to attain the network segment with a bitwise and.
+
+        For example: 192.168.68.1/24.
+
+        It can be used to represent the bytes allocated
+        to the network for any classful address, but
+        we typically use it to describe super or sub netting
+        network configurations.
+
+        For example: 192.168.68.1/25 would mean that
+        there's one extra bit allocated to the
+        network for this network; one bit means two subnets.
+
+        You could use this to have one host per subnet; but
+        that's silly for obvious reasons.
+
+        One benefit to sub netting are the broadcast addresses;
+        each network has associated to it a broadcast address
+        for communicating with every device on the network, typically
+        having an address with a host part equal to
+        the last representable number of the host portion of the address.
+
+        If we were to have one network with many hosts, it would
+        take longer to talk to them all when pinging the broad
+        cast address; using sub netting reduces the time
+        to ping each network segment.
+
+      The Private, Public Distinction:
+
+        Each IPv4 address is either public or private; private IP address can't directly access
+        the internet, requiring an ISP to route them through public addresses to do so.
+
+        Public address, thus, can access the internet directly.
+
+        Having ISPs and using sub netting solves the problem of finite IPv4 addresses; by routing
+        private IPs through public ones and dividing networks into subnets we can
+        make it seem as though we have more IPs than we actually have.
+
+        There are ranges addresses determined by the IP classes that can represent private addresses, with the
+        rest of the representable IPs of the class being public.
+
+        Private Address Range:
+
+          A: 10.x.x.x
+          B: 172.x.x.x - 172.16.x.x
+          C: 192.168.x.x

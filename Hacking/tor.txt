@@ -1,0 +1,20 @@
+Installing Tor:
+
+  ~$ sudo pacman -Sy tor
+
+Enabling Tor:
+
+  ~$ sudo systemctl start tor; systemctl status tor
+
+Configuring Proxychains4:
+
+  Within the /etc/proxychains.conf directory
+  you'll need to ensure the following.
+
+  1. Ensure that dynamic chains are set.
+  2. Ensure that dns is being proxy routed.
+  3. Ensure that socks5 is used.
+
+Using tor with proxychains:
+
+  ~$ proxychains4 firefox # glowies can't touch shit (they can; autonomy is cut bear to the bone under lateralism)!

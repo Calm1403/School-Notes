@@ -1,0 +1,36 @@
+
+These are a list of common methods for performing a successful cyber attack:
+
+Dictionary Attack:
+
+  A dictionary attack entails the attacker using words from a list
+  of words, a dictionary, in hope one words of the dictionary
+  is the correct password unlocking the target machine.
+
+  Typically these are passwords easily guessable.
+
+Brute Force:
+
+  Trial and error; performed by an application to decode encrypted
+  information, like passwords or Data Encryption Standards (DES).
+
+  This is an example of a brute force attack.
+
+Rule Based:
+
+  This is used when segments of a password are known; a set of rules
+  and a word list is required, where these rules define
+  a pre-process that each word in the word will under go
+  before being put though a hashing algorithm.
+  
+  By compiling lists of rules that emulate user behaviour, a simple
+  word list can become a highly efficient means of cracking passwords
+  by generating other likely passwords.
+
+Rainbow tables:
+
+  A rainbow table allows passwords to be cracked in a very
+  short amount of time.
+
+  They're essential huge sets of precomputed tables filled
+  with hash values that are pre matched.
