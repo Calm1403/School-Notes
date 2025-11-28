@@ -34,3 +34,77 @@ Rainbow tables:
 
   They're essential huge sets of precomputed tables filled
   with hash values that are pre matched.
+
+  Protecting Passwords:
+
+    If you want to protect passwords, a common method is
+    through salting; additional textual information is
+    added to the password to alter the unique hash associated
+    to it.
+
+    [Test] -> [Test('ac;cm)] -> Hash Box -> f52b32934jd9234nsl239dsd93halikh34sdf9
+
+    The salt along with the resultant hash is added to the password
+    store.
+
+Password Hacking:
+
+  This is fun and there's many ways to go about it.
+
+  Air Crack:
+
+    Aircrack-ng is a wireless password cracker.
+
+    Note that even on kali linux it's difficult to use this program
+    due to the fact that to use it effectively, you need to
+    patch the wireless interface's drivers manually to be able to
+    use the monitory and injection modes; it's better to use this
+    on an actual operating system.
+
+    It's good if you're bloody desperate to scan a coffee shop
+    network or your own; it's highly sophisticated.
+
+  John the ripper:
+
+    https://www.openwall.com/john/doc/MODES.shtml
+   
+    John the ripper is a 'password recovery tool,' it can be used as
+    such but we're going to use it to hack passwords.
+
+    It detects week unix passwords.
+
+    Usage:
+
+        ~$ john <password file>
+
+      This will use the default order of modes.
+
+      If we want to specify various kinds of modes.
+
+        ~$ john --wordlist=<password list>.lst --rules <password rules>
+
+        This restricts it to one word list using the word list mode
+        and particular word mangling rules with the rules mode.
+
+        Cracked passwords will be printed to the terminal and saved in the
+        $JOHN/john.pot file.
+
+        You can display cracked passwords with the following.
+
+          ~$ john --show passwd
+
+      Modes:
+
+        Wordlist mode is the simple cracking mode; you specify a wordlist and some password files.
+
+        Shadow Passwords:
+          
+          Might be helpful information.
+
+          A shadow password is a file that stores encrypted passwords; it's
+          accessible to only the root user on unix like systems.
+
+          You can unshadow a password file using John's unshadow utility.
+
+            ~$ umask 077; unshadow /.etc/passwd /etc/shadow > my_passwds.
+
