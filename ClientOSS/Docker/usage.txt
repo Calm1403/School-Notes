@@ -42,6 +42,7 @@ Building images:
   This is done by including a Dockerfile, a text based script instruction set for building the image.
 
   Example:
+
     1. git clone https://github.com/docker/getting-started-todo-app
     2. cd getting-started-todo-app
     3. docker build -t <DOCKER_USERNAME>/getting-started-todo-app.
