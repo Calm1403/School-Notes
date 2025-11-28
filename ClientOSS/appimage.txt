@@ -1,9 +1,6 @@
 
 App images:
 
-	App images are a means for upstream devs to provide binaries for Linux users
-	the same way they could do for other operating systems.
-
 	It permits the packaging of applications for any linux based operating system.
 
 	App images come with all the dependencies that cannot be assumed to be
