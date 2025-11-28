@@ -13,3 +13,16 @@ PORTS:
 
   Telnet was written as a remote shell program during the first stages of ARPANET; it was written
   in 1969, later being replaced by open ssh in the year 2000, 31 years later.
+
+USAGE:
+
+  To use ssh, type the following in a shell environment on a computer with an ssh implmentation
+  like openSSH installed.
+
+    ~$ ssh <host>@<address>[:<port>]
+
+  The box brackets just indicate that the port is option, and doesn't need to be specified making
+  ssh assume the port being used is the typical one.
+
+  You'll be prompted with a password requirement.
+
