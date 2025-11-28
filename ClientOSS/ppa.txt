@@ -1,23 +1,33 @@
-PPA - Personal Package Archive
+PPA:
 
-This is a software repository for uploading source packages to be
-built and published.
+  A ppa is a software repository containing source packages
+  that are built and published by anyone interested in
+  a facilitated means of distributing their software.
 
-They're used as an APT repository entry by canonical's launchpad service.
+  They're used as an APT repository entry by canonical's launchpad service.
 
-Anyone could make a PPA which means they're not very secure; they could
-be easily used to ditribute melicious code.
+  Anyone could make a PPA which means they're not very secure; they could
+  be easily used to ditribute melicious code.
 
-You can add a PPA through these commands:
-1. sudo apt-get-repository ppa:<repository>
-2. sudo apt-get update
-3. sudo apt-get install <name of application from repository>
+  You can add a PPA through the following commands.
 
-There's four kinds of repository:
-1. Main - Canonical Supported FOSS repositories.
-2. Universe - Community maintained FOSS repositories.
-3. Restricted - Proprietary drivers.
-4. Multiverse - software restricted by copyright issues.
+    1. sudo apt-get-repository ppa:<repository>
+    2. sudo apt-get update
+    3. sudo apt-get install <name of application from repository>
 
-You can see these sources in /etc/apt/ in the source.d file or the source.d
-directory therein. 
+  There's four kinds of repository:
+  
+    1. Main - Canonical Supported FOSS repositories.
+    2. Universe - Community maintained FOSS repositories.
+    3. Restricted - Proprietary drivers.
+    4. Multiverse - software restricted by copyright issues.
+
+  You can see these sources in /etc/apt/ in the source.d file or the source.d
+  directory therein.
+
+  I don't personally like using these because it's a canonical product; as it is
+  with snap packages. 
+
+  I'd prefer flat packages, the arch user repository, or app images which is
+  arguably worse but hey, viva' la open source; I'd take docker too, that's
+  pretty damn good.

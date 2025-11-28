@@ -25,13 +25,18 @@ Info:
 
   The tor daemon uses port 9050 on localhost to connect to the tornet.
 
-  To ensure:
-    In /etc/proxychains4.conf:
+  To ensure in /etc/proxychains4.conf;
+
     1. socks5 127.0.0.1 9050 is set under [ProxyList].
-      - Tor uses port 9050 on the local machine to connect to the tor net. 
-      - Socks5 enable proxies to use UDP and TCP.
+    
+       Tor uses port 9050 on the local machine to connect to the tor net. 
+       Socks5 enable proxies to use UDP and TCP.
+
     2. dynamic-chain is enabled.
-      - This ensures that dead proxies are skipped over; there may be dead ones in
-        the tor net.
+
+       This ensures that dead proxies are skipped over; there may be dead ones in
+       the tor net.
+
     3. proxy_dns is enabled.
-      - This ensures that DNS requests are proxied too; chance of dns leaks reduces.
+
+       This ensures that DNS requests are proxied too; chance of dns leaks reduces.
