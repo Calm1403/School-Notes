@@ -21,8 +21,7 @@ Fetch Execute Cycle:
 
     MDR (Memory Data Register):
 
-      This is a two way register; it data is both read and written to this
-      register.
+      This is a two way register; data is both read and written to it.
 
       On read, the data addressed by the location in the MAR is used to
       populate the MDR.
@@ -82,7 +81,7 @@ Fetch Execute Cycle:
       4.  PC <- PC + 1
 
     Suppose that the opcode represented by IR(OP) was LOAD <A>, B; this corresponds
-    with loading the accumulator with the value B at the address <A>.
+    to loading the accumulator with the value B at the address <A>.
     
     The IR(ADDR) portion(s) of the value within the instruction register corresponds to
     an operand, which is a value used in an operation.
@@ -129,9 +128,6 @@ CPU Cache:
   random access memory, which uses a latching mechanism
   to store each bit of information. This memory
   doesn't require to be refreshed, unlike DRAM.
-
-  It does tend to be more expensive to implement as
-  opposed to cache memory.
 
   There is a trade-off between size and speed in
   the process of designing memory: a larger size makes
