@@ -81,7 +81,7 @@ Fetch Execute Cycle:
       4.  PC <- PC + 1
 
     Suppose that the opcode represented by IR(OP) was LOAD <A>, B; this corresponds
-    with loading the accumulator with the value B at the address <A>.
+    to loading the accumulator with the value B at the address <A>.
     
     The IR(ADDR) portion(s) of the value within the instruction register corresponds to
     an operand, which is a value used in an operation.
