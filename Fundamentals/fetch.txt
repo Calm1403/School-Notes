@@ -563,7 +563,8 @@ Interrupt Requests (IRQ):
         requests sent by devices.
 
         This serialised information is typically then transferred to the CPU
-        one serialised interrupt datum at a time to prevent race conditions.
+        one serialised interrupt datum at a time to prevent race conditions; the
+        serialised datums are cpu interpretable IRQ codes.
 
         Multithreading with non thread-safe memory access is a good example of
         race conditions, it's also a good excuse to read into multithreading.
@@ -572,3 +573,7 @@ Interrupt Requests (IRQ):
         separate lines, based on the priority of the device; a very well known IRQC is the
         Intel 8259 controller chain, which is surpassed by a modern implementation called
         the APIC, part of the ACPI specification.
+
+        Instead of polling each device, a system can run along nicely until such
+        a time occurs where a device wants to signal an event, preventing the system
+        from querying each device; the devices come to the system when they're ready.
