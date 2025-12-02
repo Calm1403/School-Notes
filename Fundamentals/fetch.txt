@@ -129,9 +129,6 @@ CPU Cache:
   to store each bit of information. This memory
   doesn't require to be refreshed, unlike DRAM.
 
-  It does tend to be more expensive to implement as
-  opposed to cache memory.
-
   There is a trade-off between size and speed in
   the process of designing memory: a larger size makes
   signals travel larger physical distances, causing
