@@ -569,6 +569,6 @@ Interrupt Requests (IRQ):
         race conditions, it's also a good excuse to read into multithreading.
 
         However, the IRQC will in many cases send multiple datums to the CPU at once, based
-        on the priority of the device; a very will known IRQC is the Intel 8259 controller
+        on the priority of the device; a very well known IRQC is the Intel 8259 controller
         chain where the Advanced Configuration and Power Interface is a modern version of
         the programmable interrupt controller.
