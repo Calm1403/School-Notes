@@ -21,8 +21,7 @@ Fetch Execute Cycle:
 
     MDR (Memory Data Register):
 
-      This is a two way register; it data is both read and written to this
-      register.
+      This is a two way register; data is both read and written to it.
 
       On read, the data addressed by the location in the MAR is used to
       populate the MDR.
