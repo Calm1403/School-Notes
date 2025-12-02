@@ -568,7 +568,7 @@ Interrupt Requests (IRQ):
         Multithreading with non thread-safe memory access is a good example of
         race conditions, it's also a good excuse to read into multithreading.
 
-        However, the IRQC will in many cases send multiple datums to the CPU at once, based
-        on the priority of the device; a very well known IRQC is the Intel 8259 controller
-        chain where the Advanced Configuration and Power Interface is a modern version of
-        the programmable interrupt controller.
+        However, the IRQC will in many cases send multiple datums to the CPU at once on
+        separate lines, based on the priority of the device; a very well known IRQC is the
+        Intel 8259 controller chain, which is surpassed by a modern implementation called
+        the APIC, part of the ACPI specification.
