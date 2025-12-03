@@ -1,0 +1,49 @@
+
+Ticket:
+
+  The ticket aims to serve as a
+  quick summary of what you did
+  to resolve a problem.
+
+Report:
+
+  The report should aim to be
+  a holistic overview of
+  the steps taken to resolve the
+  problem; what you did, how
+  it was done, what you
+  used to do what you did
+  to do what was done; it
+  should be structured orderly
+  including the six stages
+  of trouble shooting and
+  the OSI model if a network
+  problem.
+
+What to do:
+
+  When tasked to trouble shoot
+  you should include the report
+  and the ticket.
+
+  You should also create a
+  spread sheet or a
+  word document of what
+  you did; order each
+  step by a number
+  along with relevant
+  information like the
+  expected result, the
+  actual result, a comment
+  on the outcome, the
+  step name, so on.
+
+  You can export the
+  ticket into a PDF
+  document; this should
+  also be included.
+
+  There should be a cover
+  sheet included; it isn't
+  strictly required at
+  the HNC level.
