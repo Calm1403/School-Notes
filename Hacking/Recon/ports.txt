@@ -19,8 +19,8 @@ Justification:
 
 Distinction to IP addresses:
 
-  IP address enable messages to get
-  to and from specific devices, where
+  IP addresses enable messages to get
+  to and from specific network devices, where
   port numbers allow the targeting
   of particular services within those
   devices; a socket is a combination
