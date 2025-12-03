@@ -1,9 +1,9 @@
 
 The gvm is greenbone's community addition vulnerability assessment scanner manager.
 
-/usr/lib/systemd/system/gsad.service is the configuration file.
+  /usr/lib/systemd/system/gsad.service is the configuration file.
 
-You'll want to edit the --listen flag at the ExecStart entry.
+  You'll want to edit the --listen flag at the ExecStart entry.
 
 Install greenbone vulnerability assessment scanner on kali:
 

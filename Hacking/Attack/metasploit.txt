@@ -7,7 +7,7 @@ Install:
 
 Running:
 
-  ~$ msrfdb
+  ~$ msfdb
 
 Meterpreter:
 

@@ -1,0 +1,12 @@
+
+When performing recon, make note of the services running on the machine.
+
+They can determine whether or not an operating system is a long term
+support distribution; when it comes to assessments, take
+screen shots of potential vulnerabilities. Distributions
+that aren't LTS in ubuntu's sake typically have nine
+months of support; they don't get security updates after
+that.
+
+During the report writing, you can and should do
+a before and after scan to demonstrate the correction.
