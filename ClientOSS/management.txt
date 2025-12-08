@@ -1,0 +1,37 @@
+
+User Management:
+
+  These are a set of useful commands for user management.
+
+    1.  Useradd - creates a new user account.
+
+        User add creates a new user account; the D flag will
+        determine whether or not the command reads values
+        specified from the command line along with
+        default values from the system, it does so
+        if the D flag is omitted during invocation.
+
+        Useful flags:
+
+          Skeleton Directory ( (-k | --skel) SKEL_DIR ):
+
+            The skeleton director contains files and directories to be
+            copied to the user's home directory; used when the home directory is
+            created by useradd, with the (-m | --create-home) flag is specified.
+
+            If this flag isn't set, the skeleton directory will be defaulted
+            to the skeleton directory specified /etc/skel or /etc/default/useradd.
+
+          Home ( (-m | --create-home) ):
+
+            This creates a user's home directory if it does not already exist; files and
+            directories contained within the skeleton directory will be coppied to the
+            home directory of the new user.
+
+            By default, if this option is not specified and CREATE_HOME isn't enabled, no home
+            directory is created; the user is just added.
+
+          Groups ( (-G | --groups) GROUP1[,GROUP2,...] ):
+
+            This is the list groups that the user is to be a member of; multiple groups
+            may be specified, delimited by commas.
