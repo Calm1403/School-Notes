@@ -45,12 +45,12 @@ ICMP - Internet Control Message Protocol:
 
 NMAP:
   Speeding Scans:
-    For things like class-A and B addresses, having a lot of hosts,
+    For things like class A and B addresses, having a lot of hosts,
     most networks that use these typically only use the first few
     addresses as if it were a class C.
 
     You can also apply the --fast-scan flag or mess with the timing
-    templates.
+    templates through the -T<N> flag, where N is a number between 1 and 5.
 
   Firewall Scanning:
     Stateful firewalls analyse the context of internet traffic.

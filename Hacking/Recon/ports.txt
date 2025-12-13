@@ -28,7 +28,7 @@ Distinction to IP addresses:
 
 OSI Layer:
 
-  Ports are part of the TCP/UDP transport layer.
+  Ports are part of the TCP/UDP transport layer, or the TCP/IP stack.
 
   Both networking protocols specify what ports
   that packets will go through.
@@ -39,3 +39,5 @@ Ports and distinctions amongst them:
   for example, port 22 typically refers to a secure remote
   shell session through the SSH protocol and port 23 refers
   to an older ARPANET sell session through the Telnet protocol.
+
+

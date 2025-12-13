@@ -22,10 +22,6 @@ Report:
 
 What to do:
 
-  When tasked to trouble shoot
-  you should include the report
-  and the ticket.
-
   You should also create a
   spread sheet or a
   word document of what
@@ -47,3 +43,21 @@ What to do:
   sheet included; it isn't
   strictly required at
   the HNC level.
+
+  The ticket section should
+  include the entire ticket;
+  the conversation between the
+  client and the troubleshooter.
+
+  In the report, you should
+  always give reasoning as to
+  what you're doing.
+
+  The trouble shooting methodology,
+  the questions, all doing should be
+  backed by reasoning; references
+  should be made the both the report
+  and the ticket.
+
+  The referencing in the ticket doesn't
+  need to be citations; URLs are fine.
