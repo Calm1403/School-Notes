@@ -1,12 +1,307 @@
 
-When performing recon, make note of the services running on the machine.
+Report Writing:
 
-They can determine whether or not an operating system is a long term
-support distribution; when it comes to assessments, take
-screen shots of potential vulnerabilities. Distributions
-that aren't LTS in ubuntu's sake typically have nine
-months of support; they don't get security updates after
-that.
+  When performing recon, make note of the services running on the machine.
 
-During the report writing, you can and should do
-a before and after scan to demonstrate the correction.
+  They can determine whether or not an operating system is a long term
+  support distribution; when it comes to assessments, take
+  screen shots of potential vulnerabilities. Distributions
+  that aren't LTS in ubuntu's sake typically have nine
+  months of support; they don't get security updates after
+  that.
+
+  During the report writing, you can and should do
+  a before and after scan to demonstrate the correction.
+
+Finger Printing:
+
+  Finger printing allows you to get various extents of information on
+  security postures; what OS is being used, what services are they running,
+  are they using cloud? It also helps identify vulnerabilities. All
+  for a particular or range of targets.
+
+  Note that no information we gather is irrelevant, no matter how innocuous
+  it may seem.
+
+  The process of recon should give us a good understanding of a target.
+
+  Active:
+
+      – Interaction with the target.
+      – Could be a company or a person, e.g.
+        • Contacting on social media.
+        • Making a phone call to the target.
+        • Doing a port scan.
+
+    This is where we directly interact with the target to gain
+    information. Note that this is most likely to be detected
+    if you're not careful.
+
+  Passive:
+
+    – Gain information on a company or person, e.g.
+      • ‘Google’ search on Microsoft.
+      • Looking at social media information such as Facebook posts, e.g.
+    – Products they are launching.
+    – Employees and their titles.
+
+    This is where we use the vast amount of information available to us
+    on the internet; here we don't interact with the target, so they
+    can't profile our activity against them.
+
+  Tools:
+
+    - Nikto.          - Gathers website information; looks for vulnerabilities.
+    - theHarvester.   - Gathers domain information.
+    - Maltego.        - Intelligence platform; searches for DNS records and osint info about people.
+    - Recon-ng.       - General recon framework.
+    - OSRFramework.   - Open source recon framework.
+    - Shodan.         - Hacker website for finding network information about servers.
+    - Google hacking. - Google dorks; a hacker database.
+    - whois           - Whois lookup tool for domains.
+
+  OSINT:
+
+    Open source intelligence is the collection of data gathered
+    from open sources, those overt services publicly available, to
+    be analysed and used to produce actionable intelligence.
+
+    This means access to this information through OSINT programs
+    is completely legal.
+
+  Whois:
+
+    Whois is a query and response protocol for querying databases; stores
+    internet resources, registered users or assignees.
+
+    The resources include domain names, IP address blocks and autonomous
+    systems, but this may be extended.
+
+  Shodan:
+
+    This allows vulnerabilities to be found on the internet; it's
+    a hacker's search engine.
+
+  The harvester:
+
+    This is a tools for gathering subdomain names, email addresses
+    virtual hosts, open ports, banners and employee names from
+    public sources like search engines and gpg key servers associated
+    to a company or just a domain.
+
+    Aside (banner):
+
+      A banner is textual information conveying the detail
+      relevant to the type and version of software running
+      on a network host.
+
+    Aside (proxies):
+
+      The harvester can use proxies to make requests.
+
+      This can be done also using proxychains4 too I'd imagine.
+
+      You can specify the proxies in the
+      /etc/theHarvester/proxies.yaml file.
+
+      You may also be able to specify the
+      socks5 port that tor uses.
+
+    Aside (DNS brute force):
+
+      The is a feature of the harvester that allows you to perform
+      a brute force DNS to enumerate DNS host names
+      by guessing common subdomains.
+
+    Aside (hostnames):
+
+      A hostname is a label assigned to
+      a device connected to a computer
+      network, identifying the device to
+      various forms of electronic communication
+      channels, such as the world wide web.
+
+      Hostnames may append the
+      a DNS domain, seperated from
+      the host specific label by the period
+      symbol '.'
+
+    Aside (api endpoints):
+
+      API means application programming interface; they're
+      used by programmers to implement features into
+      software without being required to 'reinvent the
+      wheel,' implementing specific functionality
+      for the user of the API.
+
+      An API endpoint is a specific
+      uniform resource identifier for
+      the provision of the functionality
+      provided by the API.
+
+      A particular API endpoint assigns the
+      place to which the requests are
+      sent to do certain functions
+      or select certain data; it's
+      the representation of
+      a set of operations that
+      can be implemented though
+      the API's usage.
+
+    Example output:
+
+      Read proxies.yaml from /etc/theHarvester/proxies.yaml
+      *******************************************************************
+      *  _   _                                            _             *
+      * | |_| |__   ___    /\  /\__ _ _ ____   _____  ___| |_ ___ _ __  *
+      * | __|  _ \ / _ \  / /_/ / _` | '__\ \ / / _ \/ __| __/ _ \ '__| *
+      * | |_| | | |  __/ / __  / (_| | |   \ V /  __/\__ \ ||  __/ |    *
+      *  \__|_| |_|\___| \/ /_/ \__,_|_|    \_/ \___||___/\__\___|_|    *
+      *                                                                 *
+      * theHarvester 4.8.2                                              *
+      * Coded by Christian Martorella                                   *
+      * Edge-Security Research                                          *
+      * cmartorella@edge-security.com                                   *
+      *                                                                 *
+      *******************************************************************
+
+      [*] Target: kali.org
+
+      [*] Searching Duckduckgo.
+
+      [*] IPs found: 6
+      -------------------
+      104.18.4.159
+      104.18.5.159
+      35.185.44.232
+      54.39.128.230
+      54.39.49.227
+
+      [*] No emails found.
+
+      [*] No people found.
+
+      [*] Hosts found: 15
+      ---------------------
+      2Fdocs.kali.org:
+      2Fwww.kali.org:
+      arm.kali.org:35.185.44.232
+      autopkgtest.kali.org:104.18.4.159,104.18.5.159
+      bugs.kali.org:104.18.4.159,104.18.5.159
+      cdimage.kali.org:54.39.128.230
+      discord.kali.org:104.18.4.159,104.18.5.159
+      docs.kali.org:104.18.4.159,104.18.5.159
+      forums.kali.org:104.18.4.159,104.18.5.159
+      http.kali.org:54.39.128.230
+      nethunter.kali.org:35.185.44.232
+      old.kali.org:54.39.49.227
+      pkg.kali.org:104.18.4.159,104.18.5.159
+      status.kali.org:104.18.4.159,104.18.5.159
+      www.kali.org:104.18.4.159,104.18.5.159
+
+    Options:
+      -h, --help            show this help message and exit
+      -d, --domain DOMAIN   Company name or domain to search.
+      -l, --limit LIMIT     Limit the number of search results, default=500.
+      -S, --start START     Start with result number X, default=0.
+      -p, --proxies         Use proxies for requests, enter proxies in
+                            proxies.yaml.
+      -s, --shodan          Use Shodan to query discovered hosts.
+      --screenshot SCREENSHOT
+                            Take screenshots of resolved domains specify output
+                            directory: --screenshot output_directory
+      -v, --virtual-host    Verify host name via DNS resolution and search for
+                            virtual hosts.
+      -e, --dns-server DNS_SERVER
+                            DNS server to use for lookup.
+      -t, --take-over       Check for takeovers.
+      -r, --dns-resolve [DNS_RESOLVE]
+                            Perform DNS resolution on subdomains with a resolver
+                            list or passed in resolvers, default False.
+      -n, --dns-lookup      Enable DNS server lookup, default False.
+      -c, --dns-brute       Perform a DNS brute force on the domain.
+      -f, --filename FILENAME
+                            Save the results to an XML and JSON file.
+      -w, --wordlist WORDLIST
+                            Specify a wordlist for API endpoint scanning.
+      -a, --api-scan        Scan for API endpoints.
+      -q, --quiet           Suppress missing API key warnings.
+      -b, --source SOURCE   baidu, bevigil, bing, bingapi, brave, bufferoverun,
+                            builtwith, censys, certspotter, criminalip, crtsh,
+                            dehashed, dnsdumpster, duckduckgo, fullhunt, github-
+                            code, hackertarget, haveibeenpwned, hunter, hunterhow,
+                            intelx, leaklookup, netlas, onyphe, otx, pentesttools,
+                            projectdiscovery, rapiddns, rocketreach,
+                            securityscorecard, securityTrails, shodan,
+                            sitedossier, subdomaincenter, subdomainfinderc99,
+                            threatminer, tomba, urlscan, venacus, virustotal,
+                            whoisxml, yahoo, zoomeye
+
+    Usage:
+
+      The typically usage looks like this:
+    
+        ~$ theHarvester -d <domain> -b <browser>
+
+  Nikto:
+
+    This is supposed to gather information from websites; it
+    looks specifically for vulnerabilities.
+
+    It allows you to scan a website
+    for known vulnerabilities.
+
+    Examination:
+
+      1. Server and software misconfiguration.
+      2. Default files and programs.
+      3. Insecure files and programs.
+      4. Outdated servers and programs.
+
+  Google Directives:
+
+    Google's directives are an easy to use means of identifying
+    more information about a particular target; it's a more
+    sophisticated approach to searching for ethical hacking.
+
+    The google index is a huge database of billions of webpages;
+    we can use google directives to easily search through these
+    services.
+
+    For example, we can use the 'site:' directive to attain
+    information from the google index only about that particular
+    domain.
+
+    Format:
+
+      The format of a site directive is site:<domain> terms(s) (to search)
+
+    Using directives allows you to focus on the search by mitigating
+    search overload.
+
+    There's loads of directives, but here a few good ones:
+
+      'Site'       - Gets information from a website and only that specified site with keywords.
+      'Allintitle' - Gets the websites containing all keywords within their respective webpage's title.
+      'Intitle'    - Gets the websites containing one of the keywords specified in the webpage's title.
+      'Inurl'      - Gets information in the webpage UR[L|I].
+      'Cache'      - Gets information within the google cache.
+
+      I'll provide some more information below.
+
+      Cache:
+
+        The cache directive is interesting; information can be accidentally added to the internet.
+        
+        Google uses bots to cache and document websites on the internet, if these bots cache
+        a site before it's taken down, the information unintentionally added within the website
+        is cached also. We can thus scan this information using the cache directive.
+
+      Intitle | Allintitle:
+        
+        Allintitle will return websites that contain all the keywords; intitle will return websites
+        that contain at least one of the keywords.
+
+        The keywords specified are in the form of a space separated list containing the keywords.
+
+        
