@@ -1,5 +1,8 @@
 Installing windows:
 
+  The windows installation is pretty straightforward; just follow
+  the GUI, basically.
+
   During the install, during the setup stage, you can create a terminal
   session through the key sequence shift+F10 to
   open an administrative command prompt (there's
@@ -13,9 +16,7 @@ Installing windows:
     the need to establish an internet connection. It stands for "out
     of box experience."
 
-    https://windowsforum.com/bypass-windows-11-network-set-3-easy-online-installation-methods.357678/
-
-  Skip using an email:
+    https://windowsforum.com/threads/bypass-windows-11-network-setup-3-easy-offline-installation-methods.357678/
 
     ~$ start ms-cxh:localonly
 
