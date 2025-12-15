@@ -304,4 +304,66 @@ Finger Printing:
 
         The keywords specified are in the form of a space separated list containing the keywords.
 
-        
+  Whois:
+
+    ~$ whois <domain>
+
+    Whois is a simple, but powerful means of getting information about a particular domain.
+
+    If the target broadcasts a whois service, we can get information about the companies DNS
+    servers, phone numbers, registry dates, system status, country, on and on.
+
+    The DNS servers are special because they determine the means by which a domain is translated
+    into an address (gross oversimplification); to get the address of a DNS server, you can take
+    the name of the server from the whois output and put it through the host command.
+
+    A dns server contains a listing of internal IP addresses and host names that belong
+    to the target; the key element of information gathering.
+
+    Always, always be sure the collected IPs belong to the scope of authorisation.
+
+    DNS servers contain a series of records matching addresses and hosts names for
+    all devices that the servers are aware of; many networks will use multiple DNS
+    servers for the sake of load balancing, and information between them is updated
+    through zone transfers, where during a transfer a DNS server will supply another
+    with all the host to address mappings it contains that it contains. Doing a
+    zone transfer is analogous to web crawling in a way; a local copy of DNS info.
+
+    This could allow us to determine the devices on a network.
+
+    A valid synonym of 'zone transfer' is 'AXFR.'
+
+  Nslookup:
+
+    This command is typically installed on linux systems; if it isn't on yours you can
+    look for it within the package archives of your system.
+
+    We can examine the domain name system trough this command; it obtains records about the
+    various hosts that a domain server is aware of.
+
+    You can run nslookup in interactive mode; this is a session particularly for
+    processing nslookup commands.
+
+      ~$ nslookup
+
+    The prompt should then look like the following.
+
+      >
+
+    You can then specify the DNS server to query against; note that
+    this isn't the target, but another name server used to get
+    DNS information about the target.
+
+      > server 8.8.8.8
+
+    If you want to specify the record type, say for instance any record in particular, you can
+    set the type of the records to be displayed; ensure spaces are as they are in the example.
+
+      > set type=any
+
+    Then you specify the target.
+
+      > google.com
+
+    This will get all the dns information about google's domain; this is perfectly legal open source
+    information. However, excessive querying can be considered highly offensive and legal misconduct.

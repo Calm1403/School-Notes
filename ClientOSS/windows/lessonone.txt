@@ -1,0 +1,67 @@
+
+Practical assessment:
+
+  In the practical, make sure to take screenshots loads
+  of screenshots; everything must be documented.
+
+  Ensure that both EFI and secure boot are enabled.
+
+OEM:
+
+  Original Equipment Manager; these people often install
+  an operating on computers on their products, people like
+  dell, intel or apple for e.g. These lot typically
+  prevent people from being required to install an
+  operating system through a boot drive.
+
+TPM:
+
+  The trusted platform module is a cryptographic chip
+  designed to verify the boot process through cryptographic
+  keys; typical uses involve a verification of the sequence of
+  hardware and software that boots the operating system, the
+  generation of cryptographic keys, random number generation
+  and so on.
+
+  Windows required version 2.0 of this standard to be implemented in order
+  to run.
+
+Installing windows:
+
+  During the install, during the setup stage, you can create a terminal
+  session through the key sequence shift+F10 to
+  open an administrative command prompt (there's
+  no account currently at this point).
+
+  Skip internet connection:
+
+    ~$ oobe/bypassnro
+
+    This tells the windows setup to use offline mode, bypassing
+    the need to establish an internet connection. It stands for "out
+    of box experience."
+
+    https://windowsforum.com/bypass-windows-11-network-set-3-easy-online-installation-methods.357678/
+
+  Skip using an email:
+
+    ~$ start ms-cxh:localonly
+
+    This instantiates the create account GUI; here you can create
+    a local account in the setup phase, reboot, and login to that
+    account created; simple no fuss.
+
+    https://droidcrafts.com/skip-microsoft-account-in-windows-11-with-one-command/
+
+  Debloating:
+
+    I personally quite like using Win11Debloat.
+
+    Once windows is installed, open powershell and write the following.
+
+    ~$ & ([scriptblock]::Create((irm "https://debloat.raphi.re")))
+
+    This will install the script and run it via powershell; follow
+    the prompt carefully and select what you want to debloat.
+
+    https://github.com/Raphire/Win11Debloat
