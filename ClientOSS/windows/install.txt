@@ -18,6 +18,8 @@ Installing windows:
 
     https://windowsforum.com/threads/bypass-windows-11-network-setup-3-easy-offline-installation-methods.357678/
 
+  Skip entering an email:
+
     ~$ start ms-cxh:localonly
 
     This instantiates the create account GUI; here you can create
