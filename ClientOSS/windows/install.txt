@@ -35,6 +35,7 @@ Installing windows:
     ~$ & ([scriptblock]::Create((irm "https://debloat.raphi.re")))
 
     This will install the script and run it via powershell; follow
-    the prompt carefully and select what you want to debloat.
+    the prompt carefully and select what you want to be included
+    during the debloat.
 
     https://github.com/Raphire/Win11Debloat
