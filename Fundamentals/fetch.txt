@@ -57,9 +57,18 @@ Fetch Execute Cycle:
     currently being pointed to by the PC, passing the relevant address through
     the address register.
 
+    Aside (bus width):
+
+      The number of bits for a cpu determines the databus width; increasing
+      the number of bits increases the amount of information that can be
+      transferred in one clock cycle.
+
+      Increasing the number of bits in the bus width increases the
+      amount of information by a power of two.
+
     The data within RAM referred to by the MAR is then placed
     within the MDR, being passed through to it on the data bus, then
-    to the IR through the same means if the data is an opcode; it's not immediately 
+    to the IR through the same means if the data is an opcode; it's not immediately
     copied to the instruction register because it may be another kind of data.
     The load command is an example of such an instance of varying data.
 
@@ -91,6 +100,19 @@ Fetch Execute Cycle:
       1. MAR <- IR(ADDR)
       2. MDR <- <MAR>
       3.  AC <- MDR # Now we know its data.
+
+API:
+
+  An application programming interface is a programming framework
+  written by programmers, for programmers; an application
+  programming interface will typically provide a service to
+  software, often data. A document written to build this interface
+  is often called the API specification, which is a set of rules
+  describing how the framework should be implemented.
+
+  For example, the Remote Proceedure Call protocol is an
+  interface, allowing users to work with remote software
+  procedures as if they were local on the host machine.
 
 DMA:
 
@@ -213,13 +235,6 @@ Dynamic Ram:
   Dynamic ram is an example of volatile memory, where on power asphyxiation
   the memory is flushed.
 
-EPROM:
-
-  An EPROM is an erasable, programmable, read only memory type; is a type of
-  programmable, erasable read only memory.
-
-  This memory can be wiped on exposure to ultraviolet light.
-
 ROM:
 
   Read only memory; this is an example of immutable memory.
@@ -227,6 +242,11 @@ ROM:
   This type of memory is typically small, fairly small in
   terms of storage, and is immutable, being unable to
   have modifications applied to it through writes operations.
+
+  EPROM:
+
+    An EPROM is an erasable, programmable, read only memory type; this memory
+    can be wiped on exposure to ultraviolet light.
 
 Software:
 
@@ -258,7 +278,7 @@ Software:
     A real time operating system is an operating system that
     guarantees the execution of a task within a fixed time
     constraint; they often ensure the implementation of
-    multi tasking, interrupt level sufficiency and multithreading.
+    multitasking, interrupt level sufficiency and multithreading.
 
   Distributed System:
 
@@ -477,7 +497,7 @@ Advanced Configuration and Power Interface (ACPI):
   This is a power management and configuration standard
   for computers developed by intel, micosoft and toshiba; acpi
   allows the operating system to control the amount of power
-  each device is give; for example, to put certain devices
+  each device is given; to put certain devices
   on standby or power off.
 
   It can be used to check a variety of things like 
@@ -587,3 +607,15 @@ Interrupt Requests (IRQ):
       These types of interrupts are often called system calls; the
       instruction used to invoke a system call is called the INT
       instruction on the x86 architecture.
+
+    4. Non-Masking Interrupts:
+
+      Masking is the process of disabling, while to unmask is to
+      enable; synonymous semantically.
+
+      A non masking interrupt, typically cannot be ignored; when an NMI is received by the
+      CPU, it indicates that a critical error has occurred, normally related to hardware.
+
+      An NMI is typically received on a separate line, as apposed to those for other interrupts to the
+      CPU. An NMI handler can produce telemetry with warnings and debugging information to identify
+      and prevent further lockups.
