@@ -117,7 +117,7 @@ SSH KEYS:
 
     Make sure to uncomment the variable as well.
 
-  Authorized_keys:
+  Authorized Keys:
 
     Ensure that the server has the following line within etc/ssh/sshd_config.
 
@@ -129,3 +129,14 @@ SSH KEYS:
 
     This will take all the public keys copied to the .ssh directory
     and append them to the authorized_keys file.
+
+  SSH Daemon:
+
+    Note that when making changes to the ssh configuration you need to
+    restart the ssh service on the server.
+
+      ~$ sudo systemctl restart sshd
+
+    Note that this is for a unix like system; if connecting to a windows
+    machine ensure replace systemctl with the relevant daemon management
+    command.
