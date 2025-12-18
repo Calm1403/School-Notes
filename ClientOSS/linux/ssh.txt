@@ -29,12 +29,12 @@ USAGE:
 SSH KEYS:
 
   Note that client refers to the network host connecting to the ssh server; the server being the
-  network hosts broadcasting the ssh service, being connected to by the client.
+  network host broadcasting the ssh service, being connected to by the client.
 
   A network host is just a device who's part of a local network of internet devices.
 
-  Client - host connecting.
-  Server - host receiving connection.
+  Client - host connecting to server.
+  Server - host receiving the connection from client.
 
   For whatever reason, most shitty blogs and forums fail to make this basic distinction or do so by using relative terms
   like 'remote' and 'local.' This isn't helpful; so I've made the distinction clear; this isn't an insult to
