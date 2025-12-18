@@ -137,6 +137,6 @@ SSH KEYS:
 
       ~$ sudo systemctl restart sshd
 
-    Note that this is for a unix like system; if connecting to a windows
-    machine ensure replace systemctl with the relevant daemon management
-    command.
+    Note that this command sequence is for a unix-like system; if connecting
+    to a windows machine ensure to replace systemctl with the relevant daemon
+    management command sequence, whatever that may be.
