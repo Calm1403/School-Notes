@@ -3,8 +3,8 @@ SSH:
 
   SSH is a remote shell program; it allows you to run a computer's shell session remotely.
 
-  Note that it may also be able to remotely execute X11 connections, arbitrary TCP ports
-  and Unix-domain sockets can also be forwarded over the secure channel.
+  Note that it may also be able to remotely execute other things like X11 connections, arbitrary TCP ports
+  and Unix-domain sockets, all of which can also be forwarded over the secure channel.
 
 PORTS:
 
@@ -16,7 +16,7 @@ PORTS:
 
 USAGE:
 
-  To use ssh, type the following in a shell environment on a computer with an ssh implmentation
+  To use ssh, type the following in a shell environment on a computer with an ssh implementation 
   like openSSH installed.
 
     ~$ ssh <host>@<address>[:<port>]
@@ -26,3 +26,106 @@ USAGE:
 
   You'll be prompted with a password requirement.
 
+SSH KEYS:
+
+  Note that client refers to the network host connecting to the ssh server; the server being the
+  network hosts broadcasting the ssh service, being connected to by the client.
+
+  A network host is just a device who's part of a local network of internet devices.
+
+  Client - host connecting.
+  Server - host receiving connection.
+
+  For whatever reason, most shitty blogs and forums fail to make this basic distinction or do so by using relative terms
+  like 'remote' and 'local.' This isn't helpful; so I've made the distinction clear; this isn't an insult to
+  intelligence, I just want to make it clear for ease of interpretability and comprehension.
+
+  The ubuntu documentation was ultimately the most helpful, from which these notes mostly derive.
+
+  https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+
+  Generation:
+
+    The open ssh suite has a particular command for this purpose; to generate a key.
+
+      ~$ ssh-keygen
+
+    It interactively prompts the user for information needed to generate a key.
+
+    It can also be used non-interactively through command flags if you want.
+
+    Note that this generates a key pair; public and private. The public
+    key should be given to the server (NOT THE PRIVATE KEY), with
+    the private kept on the client.
+
+    The private and public keys are called (depending on the algorithm)
+    id_rsa and id_rsa.pub respectively; the algorithm used in this case would
+    be RSA, the algorithm is appended to the symbol 'id_'.
+
+    You'll want to write this command on the client, the machine that
+    we're connecting to the server from; we then copy the
+    key to the ssh server.
+
+  Location:
+
+    During the prompt, you'll want to store the generated key in the
+    /home/<username>/.shh/id_rsa directory.
+
+    This is the default location; it can be changed but it's not required
+    nor is it recommended because this is the first place ssh looks for
+    public keys; pressing enter when prompted specifies that this is your choice.
+
+    To specify no password when prompted to enter one, you just
+    press enter twice; it's an extra layer of security on top of
+    the public key, but it's still subject to dictionary and hash comparison
+    attacks.
+
+  Copying the key:
+
+    Now, we need to copy the key to the ssh server being connected to.
+
+    To copy the key, you can use the following the commands on the client.
+
+      ~$ ssh-copy-id <server name>@<address>
+
+    You could also use the scp command which implements the same
+    backend as the ssh.
+
+      ~$ scp <public key name> <remote name>@<address>:/home/<user>/.ssh/
+
+    Note that you may need to create the authorized_keys file in the .ssh folder which
+    is often required; I explain that below.
+
+    You could also use ssh itself to copy the key, interestingly, before making the server key based.
+
+      ~$ cat ~/.ssh/id_rsa.pub | ssh <remote name>@<address> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+
+    But that's assuming you haven't already configured the server to use keys.
+
+  Server configuration:
+
+    Once the key is on the remote host, ensure that password authentication is disabled on the server.
+
+      ~$ sudo [vim | nano | ...] /etc/ssh/sshd_config; sudo systemctl restart [sshd | ssh | ...]
+    
+    You've the choice of text editor for this; note that the ssh daemon is aliased, having different
+    names across distros.
+
+    Within this file, disable the 'PasswordAuthentication' variable by setting it's value to 'no'
+    and the 'PublickeyAuthentication' variable to 'yes'. The format of the config follows the
+    principal of <variable><space><yes | no>. They're key value pairs.
+
+    Make sure to uncomment the variable as well.
+
+  Authorized_keys:
+
+    Ensure that the server has the following line within etc/ssh/sshd_config.
+
+      AuthorizedKeysFile  .ssh/authorized_keys
+
+    With the copied public key, run the following command in the .ssh directory.
+
+      ~$ for key in $(ls *.pub); do cat $key >> authorized_keys; done
+
+    This will take all the public keys copied to the .ssh directory
+    and append them to the authorized_keys file.
