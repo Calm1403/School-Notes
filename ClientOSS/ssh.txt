@@ -3,7 +3,7 @@ SSH:
 
   SSH is a remote shell program; it allows you to run a computer's shell session remotely.
 
-  Note that it may also be able to remotely execute other things like X11 connections, arbitrary TCP ports
+  Note that it may also be able to remotely execute other things like X11 connections
   and Unix-domain sockets, all of which can also be forwarded over the secure channel.
 
 PORTS:
@@ -21,7 +21,7 @@ USAGE:
 
     ~$ ssh <host>@<address>[:<port>]
 
-  The box brackets just indicate that the port is option, and doesn't need to be specified making
+  The box brackets just indicate that the port is optional, and doesn't need to be specified making
   ssh assume the port being used is the typical one.
 
   You'll be prompted with a password requirement.
