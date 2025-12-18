@@ -3,7 +3,7 @@ SSH:
 
   SSH is a remote shell program; it allows you to run a computer's shell session remotely.
 
-  Note that it may also be able to remotely execute other things like X11 connections, arbitrary TCP ports
+  Note that it may also be able to remotely execute other things like X11 connections
   and Unix-domain sockets, all of which can also be forwarded over the secure channel.
 
 PORTS:
