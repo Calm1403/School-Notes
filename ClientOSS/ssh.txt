@@ -21,7 +21,7 @@ USAGE:
 
     ~$ ssh <host>@<address>[:<port>]
 
-  The box brackets just indicate that the port is option, and doesn't need to be specified making
+  The box brackets just indicate that the port is optional, and doesn't need to be specified making
   ssh assume the port being used is the typical one.
 
   You'll be prompted with a password requirement.
