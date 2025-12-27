@@ -36,9 +36,10 @@ SSH KEYS:
   Client - host connecting to server.
   Server - host receiving the connection from client.
 
-  For whatever reason, most shitty blogs and forums fail to make this basic distinction or do so by using relative terms
-  like 'remote' and 'local.' This isn't helpful; so I've made the distinction clear, but note that this isn't an insult to
-  intelligence, I just want to make it clear for ease of interpretability and comprehension.
+  For whatever reason, most shitty blogs and forums fail to make this basic distinction or do so by using relative 
+  terms like 'remote' and 'local.' That isn't helpful; so I've made the distinction clear, but note that this explicit 
+  distinction isn't intended as an insult to the reader's intelligence, I just want to make it clear for ease of interpretability 
+  and comprehension.
 
   The ubuntu documentation was ultimately the most helpful, from which these notes mostly derive.
 
