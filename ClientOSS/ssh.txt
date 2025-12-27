@@ -85,7 +85,7 @@ SSH KEYS:
 
     Now, we need to copy the key to the ssh server being connected to.
 
-    To copy the key, you can use the following the commands on the client.
+    To copy the key, you can use the following commands on the client.
 
       ~$ ssh-copy-id <server name>@<address>
 
