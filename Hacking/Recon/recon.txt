@@ -239,7 +239,7 @@ Finger Printing:
 
     Usage:
 
-      The typically usage looks like this:
+      The typical usage looks like this:
     
         ~$ theHarvester -d <domain> -b <browser>
 
