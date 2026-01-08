@@ -1,0 +1,80 @@
+
+Investigating a problem:
+
+  This should be a logical and systematic approach carried out under
+  sequences of steps; you identify the symptoms of the problem, then
+  identify the area affected by the problem, recently applied changes
+  that may have caused it, the most likely source that may have caused
+  it, implement a solution to resolve the problem, then test the solution.
+
+  It's important that you document everything too.
+
+Problem Solving Process:
+
+  1. Identify the problem.
+  
+      Start with open (ambiguous) and closed ended (yes / no) questions.
+      
+      Document the responses; verify these descriptions by
+      gathering data from the computer's logs through BIOS
+      information, device manager, event viewer, if it's a
+      Linux device you consider the programs of that
+      nature, systemd's journalctl for e.g. for event diagnostics.
+
+  2. Establish a theory of probable cause.
+
+      Create a list of the most common reasons why the error
+      would occur. Start with the easiest, or most obvious causes.
+
+  3. Test the theory of probable cause.
+
+      Determine the exact cause by testing the theories of
+      probable causes incrementally; after all the probable theories
+      are exhausted, determine new ones and test them.
+
+  4. Establish a plan of action to resolve the cause.
+
+      After the cause is identified, create a plan of action to resolve it; sometimes
+      quite procedures can determine the exact cause of the problem or even correct it.
+
+      If a procedure does not correct the problem, further research is required.
+
+      Dividing larger problems into smaller sub-problems that can be
+      analysed and solved individually is an effective way of solving
+      the problem collectively.
+
+  5. Verify full system functionality and implement preventative measures.
+
+      Verify all system functionality by implementing any preventative measures
+      require; ensure that another problem hasn't been created during the
+      resolution of the problem.
+
+  6. Document findings, actions and outcomes.
+
+      Discuss the solution; ensure it's been resolved.
+
+      Document the process, give a description, the steps to resolve it, and the
+      components used during the repair.
+
+Approach:
+
+  Initially, determine the scope, apply your experience and analyse the problem.
+
+  Use a suitable approach:
+
+    1.Linear (top down and bottom up).
+
+      Examples are given in the context of the OSI model.
+
+      Bottom-Up:
+
+        You start with the physical layer, then work up.
+
+      Top-Down:
+
+        You start with the application layer, then work down.
+
+    2. Half slip (divide and conquer).
+
+      This is a divide and conquer approach where
+      the problem is segmented in some way.
