@@ -76,5 +76,7 @@ Approach:
 
     2. Half slip (divide and conquer).
 
-      This is a divide and conquer approach where
-      the problem is segmented in some way.
+      With a divide and conquer approach, the cause of the problem
+      is often 'narrowed down.' You start with a collection of problems
+      then fire down the ones that aren't the cause, to find the one that
+      is.
