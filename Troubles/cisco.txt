@@ -101,17 +101,17 @@ Ethernet:
     representable host, being x.x.x.1 or x.x.x.254.
 
     Packet:
-    
+
       These are the datagrams often encapsulated within frames; each has a destination and source IPv4 address, required by networking
       devices to ensure the information is provided to the destination, and replies from the destination to the source.
 
-
     Classes:
 
-      There are different classes of IPv4 addresses; each are divided into two segments representing the host and network
+      There are different classes of IPv4 addresses; each class is divided into two segments representing the host
+      and network to which the host belongs.
 
-      The distinction between classes is the number of bytes allocated to each octet for representing the host and network;
-      note that an octet is a sequence of eight bits.
+      The distinction between classes is the number of bytes allocated to each octet for representing the host and 
+      network; note that an octet is a sequence of eight bits, a byte.
 
       1. Class C addresses have three bytes allocated to the network, with one byte allocated to the host.
       2. Class B addresses have two bytes allocated to the network, with two bytes allocated to the host.
@@ -167,3 +167,5 @@ Ethernet:
           A: 10.x.x.x
           B: 172.x.x.x - 172.16.x.x
           C: 192.168.x.x
+
+
