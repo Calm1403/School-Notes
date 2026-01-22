@@ -1,0 +1,66 @@
+
+Computer Misuse Act (1990):
+
+  Key Points:
+
+    1. Unauthorised access to computer material; hacking, up to six months in prisons, fine of £5000.
+    2. Unauthorised access to computer materials with further
+       intent to commit a crime; upto five years in prison, unlimited fine.
+    3. Unauthorised modification of data; upto five years in prison, unlimited fine.
+    4. Making, supplying or obtaining anything that can be used in
+       computer offenses; up to ten years in prison, unlimited fine.
+
+    Mnemonics:
+
+      Offenses:
+
+      1. A)ccess.
+      2. F)urther intent to cause harm.
+      3. M)odification.
+      4. P)romotion of items used for computer misuse.
+
+      AFMP - Attackers forgo morality's promotion.
+
+      Penalties (For Each Offense):
+
+      1. S)ix months and £5000.
+      2. F)ive years, unlimited fine.
+      3. F)ive years, unlimited fine.
+      4. T)en years, unlimited fine.
+
+      SFFT - Six Five Five Ten.
+
+      Remember to associate six to the number 5000.
+
+      Basically, #define six 5000; give the old macro expander up there a kick.
+
+Data Protections Act (1998):
+
+  Key Points:
+
+    1. Data must be collected and used fairly and inside the law.
+    2. Data must only be held and used for the information commissioner.
+    3. Data can only be used for those registered purpose; you can't give it
+       away or sell it unless you said you would initially.
+    4. The data held must be acceptable, appropriate and not beyond what
+       is required when compared with the purpose for which the data is held.
+    5. Data must be accurate and be kept up to date.
+    6. Data must not be kept for longer than required.
+    7. Data must be kept safe and secure; personal data protected.
+    8. Data may not be transferred outside the EU Economic Area (an area
+       of trade and free movement).
+
+    Mnemonics:
+
+      Requirements:
+
+      1. F)air (collected fairly).
+      2. O)nly (only for the IC; used and held only for the information commissioner).
+      3. P)urpose (it should only be used for the registered purpose).
+      4. R)equired (should be required when compared to original purpose).
+      5. A)ccurate (kept up to date).
+      6. R)edundancy (should not held longer than needed).
+      7. P)rotected (safe and secure).
+      8. C)ontained (held within the EU Economic area).
+
+      FOPRARPC - Funny orange parrots read about recurrent philosophy, curiously.
