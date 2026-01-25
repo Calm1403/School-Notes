@@ -30,7 +30,7 @@ Computer Misuse Act (1990):
 
       SFFT - Six Five Five Ten.
 
-      Remember to associate six to the number 5000.
+      Just, remember to associate six to the number 5000.
 
       Basically, #define six 5000; give the old macro expander up there a kick.
 
@@ -64,3 +64,44 @@ Data Protections Act (1998):
       8. C)ontained (held within the EU Economic area).
 
       FOPRARPC - Funny orange parrots read about recurrent philosophy, curiously.
+
+The IPC (Intellectual Property Act):
+
+	Key Points:
+
+		1. Marking products with a link.
+
+			 This allows patent owners to mark their produces with a hyperlink to a website
+			 detailing the specific patent number associated with the product.
+
+		2. Unified patent court.
+
+			 This court is a specialist court; provides a framework for the purpose of dealing with
+			 cases of infringement.
+
+    3. Opinion service.
+
+       Offers a means of resolving disputes by providing an affordable assessment of
+       a patent's infringement case, to determine if it's valid, and or whether or not
+       it's an original design.
+
+    4. Criminal Offense:
+
+       It's an offense for a person to intentionally copy a registered design, with intent to
+       make it a product of their own. The offense can ensue a 10 year prison sentence.
+
+    5. Prior user rights.
+
+       Limited protection is given to those who use a registered design in good faith; they
+       may continue to use the design, but aren't permitted to expand on the usage of the design
+       beyond the original.
+
+    Mnemonic:
+
+      MUOCP - Many utilitarian operations compartmentalise prospects.
+
+      Compartmentalisation in the nature of separation; operation in
+      implicit regards for an action taken by a utilitarian. Chances
+      are weighed, considered individually, separated, and so they're
+      compartmentalised in that sense, the prospects constituent to
+      the action.
