@@ -10,13 +10,25 @@ my written notes over to this repository, so not everything will be here.
 
     Description - A description of what this is.
     Table Of Contents - A list of information.
+    'Vibed' info - A disclaimer regarding AI.
     Commits - Information about commit style.
     Repository Format - Information about the style of the repo.
     Repository Heirarchy - Visualisation of the style.
     Document Format - Format of notes.
     Topic Format - Format of topics within notes.
     Command Format - Format of commands within notes.
-    
+
+## 'Vibed' info:
+
+AI may be used to find sources related to a topic, in order to compile your own information; much akin to
+wikipedia's citations. However, I personally refuse to use artificial intelligence to search for
+information; I compile my own information together through manual research, and I take time to ensure that
+information I find is creditable.
+
+If I have reason to speculate that information submitted through a pull request is mindlessly 'vibed,' I
+simply won't allow it to be merged. This is only to ensure that information remains creditable, which
+is also why I ask for you to provide citation when validating your reasoning for uploading
+notes.
 
 ## Commits:
 
@@ -25,20 +37,18 @@ be egregiously silly either; commits and notes can be funny, as long as you note
 the following.
 
 I'm entirely happy for people to make pull requests and commits as long
-as they follow the format below at least somewhat; I feel like keeping
-text uniform is practical, because structure is easy to read and 
-incoherent text is difficult to read, simply.
+as they follow the repository/document format below at least somewhat; I
+feel like keeping text uniform is practical, because structure is easy to read
+and incoherent text is difficult to read, simply.
 
 If you're going to make commits, it may be helpful to place
 references in the commit message from where the information is derived
 along with a brief description of the addition.
 
 Furthermore, if you find that a document contains information that is
-either misleading or wrong, please feel free to call me, and
-only me; so no one else, an idiot, correct me or the person who 
-wrote the document and make your changes with an explanation of
-why the information previously was malformed and why your
-interpretation is valid with reasoning and reference to source.
+either misleading or wrong, please feel free to make a correction to the document through
+a pull request with a justification describing why the information previously
+was malformed, along with creditable citations to better sources.
 
 ## Repository Format:
 
@@ -50,7 +60,7 @@ documents.
 A topic is just a piece of particular information relevant
 to the parent subject, contained within a document.
 
-The reason why documents may be seperate is because
+The reason why documents may be separate is because
 the topics in such case are widely different; this is just my 
 way of organisation and it makes sense to me.
 
@@ -58,7 +68,7 @@ As a concrete example, documents on the nmap program are part of
 the ethical hacking subject in the hacking directory, where topics 
 pertaining to nmap may include things like the distinction between scan types
 and their practicalities over each other, and scripts that
-nmap can perform like cache spoofing DNS servers or
+nmap can perform like cache snooping DNS servers or
 vulnerability determination of hosts.
 
 ## Respository Heirarchy:
@@ -97,8 +107,8 @@ man page, but simpler.
 
 There are two principals that I (try) to adhere to:
 
-1. R.T.F.Q - Read the F!cking Template! ( Please :) )
-2. K.I.S.S - Keep It Simple Sweetie/Stupid. ( Somewhat Optional >:) ).
+1. R.T.F.T - Read the Fncking Template!
+2. K.I.S.S - Keep It Simple Sweetie/Stupid.
 
 Notes can be technical as long as the information is structured
 and clarified in a way that helps the person reading it; they
@@ -111,8 +121,9 @@ using other programs, like word for instance, you could ignore this, but it's
 always nice to have some coherency, so you could attempt to mimic it if you're
 comfortable with that.
 
-If you want to deviate from the format if you're not using a .txt format, please
-ensure that your notes are written coherently for others to easily understand.
+If you want to deviate from the internal document format if you're not using
+a .txt format, please ensure that your notes are written coherently for others to
+easily understand.
 
 Note that I would prefer if you do write in the .txt format, just to
 simplify things by having one common data type to facilitate
@@ -128,15 +139,15 @@ within those topics.
 This read file is a poor example, because it's in markdown as opposed
 to raw text, but it does adhere to this structure.
 
-I try to keep the paragraph width relatively small, so it's convieniant to read while split
+I try to keep the paragraph width relatively small, so it's convenient to read while split
 screening, but note that I don't manage the actual width of the text; it's purely eye
 balled, although I may begin to enforce it if it's really an issue.
 
 ## Command Format:
 
 When exemplifying commands, I always introduce the command at a high level
-with a brief description, then indent the command below that text describing
-the command to  which the command relates, like so:
+with a brief description; the command is often below the text that describes it
+like so:
 
     ~$ echo -e "\x1b[1;31mI'm gonna die! :("; sudo rm -rf /* --no-preseve-root \ 
         # Init, you should SIGINT (9) yourself now!

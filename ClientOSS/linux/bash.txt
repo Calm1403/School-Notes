@@ -18,7 +18,6 @@ Symbols:
 
     will return the user to the directory visited prior.
 
-Preface:
 	Symbols surrounded by box brackets are optional.
 
 Interactivity:

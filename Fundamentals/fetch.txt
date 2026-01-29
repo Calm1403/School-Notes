@@ -346,9 +346,8 @@ Software:
             implementation; the free list keeps note
             of what elements are free for use in memory and
             their size. This is typically prone to
-            fragmentation, and since the system is inherently
-            arbitrary, it only emphasises the R in RAM.
-  
+            fragmentation.
+
             Other implementations may include buddy blocks,
             where in this system allocations of memory
             may be made in several pools as opposed to one.
@@ -368,7 +367,7 @@ Software:
          the stdlib's malloc and free functions.
 
       3. Provide common services for interfacing and accessing
-         devices; enables applications to be ran
+         devices; enables applications to be run
          on different hardware through one common interface.
 
          This is a generic overview of the second mandated
@@ -381,14 +380,7 @@ Software:
 
     The layered structure mandates that different services
     of the operating system are split into the various
-    layers.
-
-    The outer most layer has the user interface
-    layer; the inner most layer has the hardware
-    layer. A particular layer can access all the
-    layers present below it, but not above 
-    it; layer n-1 ca access layer n-2 through to
-    zero, but cannot access layer n.
+    layers, as to organise functionality.
 
     The layers of an operating system are typically
     hardware enforced; the x86 architecture has typically
@@ -399,48 +391,39 @@ Software:
     generally; it may differ depending on the operating
     system.
 
-    1. Hardware layer (second inner most):
+    1. Kernel (inner most layer):
 
-      There are various types of devices that we attach to the computer;
-      peripheral devices may include the mouse, keyboard, printer, there's
-      many I could name; these devices are managed at the hardware layer,
-      this layer having the most authority, being attached directly
-      to the kernel.
-
-    2.
-
-      CPU scheduling layer:
+      This is the core part of the computer system; it's an implementation of the operating
+      system features that were outlined above.
+ 
+    2. CPU scheduling layer:
 
       The scheduling is managed at this layer of the operating system.
+      
       This is responsible for managing how many processes will be
-      allocated to the CPU.
+      allocated to the CPU and how much time on the CPU those individual
+      processes have; on linux you can effect the priority of processes, how
+      their scheduled, through the command 'nice.'
 
       Note that only one process may be allocated to the CPU at
       any given time; computers swap out these processes really
-      quickly to simulate the asyncronisation.
+      quickly to simulate the asynchronisation.
 
     3. The memory management layer:
 
-      This is concerned with swapping memory in and out; when the computer
-      runs, executing programs are allocated to main memory as processes and
-      when they finish their purpose they're removed from main memory.
+      This is concerned with swapping memory in and out, process loading; when
+      the computer runs, executing programs are allocated to main memory as
+      processes and when they finish their purpose they're removed from main memory.
 
-    4. Process management layer:
-
-      The priority of the process is managed within this layer; what priority
-      it takes over the CPU's resources.
-    
-      It's also the place where a process's place on the schedule is determined.
-
-    5. I/o layer:
+    4. I/o layer:
 
       I/o buffers are managed in this layer; computer buffers store data
-      temporarily, because of the slow operation of I/o devices, storing
+      temporarily, and because of the slow operation of I/o devices, storing
       a large amount of data to send it off in one single operation as
-      opposed to multiple smaller operations.
+      opposed to multiple smaller operations is often faster.
 
       Keyboards typically have buffers attached to them in contexts like
-      terminal prompts, such as macro processors for executing commands.
+      terminal prompts.
 
       This is more due to the fact that it's operationally inefficient to
       determine the purpose of a symbol in sequences of characters, and it's
@@ -454,7 +437,7 @@ Software:
       In fact, the buffer of a shell gets populated by characters sequentially
       too.
 
-    6. User program layer (outer most):
+    5. User Interface Layer (outer most):
 
       This is the layer associated to programs; this is typically the user interface.
 
@@ -463,13 +446,7 @@ Software:
       needs of the one client or perhaps more joint clients, and off the
       shelf software is designed to satisfy the requirements of a large user
       base, only providing features of use to a majority of the customers.
-
-    0. Kernel (inner most layer):
-
-      This is the core part of the computer system and typically
-      represents a collective implementation of the operating
-      system features that were outlined above.
-
+ 
 Firewalls:
 
   A firewall is a system designed to prevent unauthorised access to and

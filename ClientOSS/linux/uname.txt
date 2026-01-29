@@ -1,0 +1,14 @@
+
+Uname:
+
+  Uname allows you to print system information.
+
+  Man Page:
+
+    You can view the options for uname on the man page.
+
+      ~$ man uname
+
+  For example, the following command can display all information about a linux system.
+
+  ~$ uname -a
