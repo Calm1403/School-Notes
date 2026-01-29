@@ -20,10 +20,10 @@ my written notes over to this repository, so not everything will be here.
 
 ## 'Vibed' info:
 
-AI may be used to find sources related to a topic, in order to compile your own information; much akin to
-wikipedia's citations. However, I personally refuse to use artificial intelligence to search for
-information; I compile my own information together through manual research, and I take time to ensure that
-information I find is creditable.
+AI may be used to find sources related to a topic, in order to compile your own information and only
+for that purpose; much akin to wikipedia's citations. However, I personally refuse to use artificial 
+intelligence to search for information; I compile my own information together through manual research, and
+I take time to ensure that information I find is creditable.
 
 If I have reason to speculate that information submitted through a pull request is mindlessly 'vibed,' I
 simply won't allow it to be merged. This is only to ensure that information remains creditable, which
