@@ -31,11 +31,12 @@ Dev:
 
     It typically provides a means of creating virtual block devices from physical devices; block device mapping.
 
-    A volume group (VG) is a collection of physical volumes (PV), which are just physical devices; a logical
-    volume (LV) is a virtual block device, and each data block in a logical volume is stored on the physical
+    A volume group (VG) is a collection of one or more physical volumes (PV), which are just physical devices.
+
+    A logical volume (LV) is a virtual device, and each data block in a logical volume is stored on the physical
     volumes belonging to the logical volume's corresponding volume group.
 
-    This means that any number of physical data volumes (physical block devices) part of a volume group can be interfaced by the same
+    This means that physical data volumes (physical block devices) part of a volume group can be interfaced by the same
     virtual device (logical volume) to store information; this is in accordance with the algorithms implemented by the device mapper
     in which the LVM is implemented.
 
