@@ -4,7 +4,7 @@ Linux file system hierarchy.
 
 '/':
 
-  This is where the tree starts of the Linux file system, the root directory.
+  This is where the tree of the Linux file system starts, the root directory.
 
 Bin:
 
