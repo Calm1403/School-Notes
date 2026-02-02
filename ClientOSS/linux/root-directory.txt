@@ -1,35 +1,131 @@
-The '/' is the primary root directory; the root directory of the entire file system hierarchy.
 
-The '/bin' directory contains command binaries that need to be available in single user mode, including to bring up the system or repair it, for all users (e.g, cat, ls, cp).
+This information is a paraphrasing of heir(7); a man page description of the
+Linux file system hierarchy.
 
-Aside: the single user mode refers to when a multiuser computer boots into a single superuser, mainly for maintenence purposes.
+'/':
 
-The '/boot' directory contains the boot loader files (e.g, kernels, initrd).
+  This is where the tree starts of the Linux file system, the root directory.
 
-The '/dev' directory contains device files (the are interfaces to device drivers that appear as ordinary files).
+Bin:
 
-The '/etc' directory contains host specific system-wide configuration files.
+  This contains command binaries.
 
-The '/etc/opt' directory contains host specific system-wide configuration files.
+Boot:
+  
+  This contains static files required to load the operating system (vmlinuz and initramfs images, also configurations and parameters for the bootloader).
 
-The '/home' directory contains saved files, person settings, documents, etc of the host's users.
+Dev:
 
-The '/lib' directory contains essentials for the binaries in /bin and /sbin.
+  This contains special device interface files that refer to physical or
+  emulated devices /dev/sda or /dev/pty respectively for example.
 
-The '/media' directory contains the mount points for removable media.
+  Aside (logical volume manager):
 
-The '/mnt' directory contains temporarily mounted filesystems.
+    ~$ lsblk
 
-The '/proc' directory contains a virtual file system providing process and kernel information as files; populated by the system on the fly.
+    You'll see things like /dev/sda and /dev/sdax, where 'x' is some number representing a partition.
 
-Aside: a virtual file system provides access to files that are either computed on request, or are mapping into another.
+    The logical volume manager is sometimes used for the purpose of having a nicer interface to partitions, it also has some benefits to
+    conventional partitioning; it may however, make the part of the output from lsblk to the block device containing the root directory
+    look a bit strange if you didn't have it automatically done for yourself.
 
-The '/sbin' directory contains essential system binaries.
+    It typically provides a means of creating virtual block devices from physical devices; block device mapping.
 
-The '/sys' directory contains information about devices drivers and kernel features.
+    A volume group (VG) is a collection of physical volumes (PV), which are just physical devices; a logical
+    volume (LV) is a virtual block device, and each data block in a logical volume is stored on the physical
+    volumes belonging to the logical volume's corresponding volume group.
 
-The '/usr' directory is the second hierarchy  for read-only user data; it contains the majority of (multi-)user utilities and applications. The directory allegedly stands for Unix System resources.
+    This means that any number of physical data volumes (physical block devices) part of a volume group can be interfaced by the same
+    virtual device (logical volume) to store information; this is in accordance with the algorithms implemented by the device mapper
+    in which the LVM is implemented.
 
-The '/usr/src' directory for example contains the linux source code and the relevent version's headers.
+    https://www.man7.org/linux/man-pages/man8/lvm.8.html
 
-The '/var' directory stores variable files; files whose content is expected to change continually during normal system operation of the system. It'll contains logs, temporary e-mail files, etc.
+    NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+    zram0                  252:0    0   1.8G  0 disk [SWAP]
+    nvme0n1                259:0    0 119.2G  0 disk
+    ├─nvme0n1p1            259:1    0     1G  0 part /boot
+    └─nvme0n1p2            259:2    0 118.2G  0 part
+      ├─ArchinstallVg-root 253:0    0    20G  0 lvm  /
+      └─ArchinstallVg-home 253:1    0    98G  0 lvm  /home
+    
+    (BTW, what is this goofy HALF-LIFE game lineage looking mess of a collection of nested block devices?)
+
+Etc:
+
+  This contains host specific system configurations; 'host' means the computer, system wide.
+
+Home:
+
+  This contains users home directories, which contains in themselves user specific files and directories.
+
+Lib:
+
+  Contains essential shared libraries and kernel modules.
+
+Media:
+
+  Contains mount points for removable media, like CD, DVD or USB.
+
+Mnt:
+
+  Contains mount points for temporarily mounting file systems; contains
+  subdirectories intended for use as mount points to temporary file systems.
+
+  I've used this to mount USB's before with file systems on them, so I guess
+  either media or mnt could be used, strangely; I might be using it wrong.
+
+Lost+found:
+
+  This will contain items lost in the file system; usually chunks of files
+  mangled as a consequence of a faulty disk or crash.
+
+Opt:
+
+  This contains add on packages, static files.
+
+Proc:
+
+  This contains information about running processes and the kernel; it's a
+  pseudo-filesystem; more information can be found in the man pages at proc(5).
+
+Root (not /):
+
+  This is usually the home directory of the root user, it's optional.
+
+Run:
+
+  Contains information describing the system since boot.
+
+Sbin:
+
+  Like bin, this directory holds commands needed to boot the operating
+  system, but ones that aren't usually executed by normal users. These
+  are called 'special binaries.'
+
+Srv:
+
+  Contains site-specific data served by the system; web servers like
+  httpd.
+
+Sys:
+
+  A mount point for the sysfs file system; provides information about
+  the kernel like proc but bettered structured, following
+  an infrastructure formalism called 'kobject.'
+
+Tmp:
+
+  This contains temporary files that may be deleted with not
+  notice, either by regular jobs or at system boot.
+
+Usr:
+
+  This is usually mounted from a separate partition; it should
+  only hold within shareable, read only data, to be mounted
+  by various other machines running Linux.
+
+Var:
+  
+  This contains files that may change in size; spool and log
+  files.
